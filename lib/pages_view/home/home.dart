@@ -19,7 +19,7 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
     final Controller c = Get.put(Controller());
 
     return Center(
-      child: Obx(() => Text("当前：" + c.count.value.toString())),
+      child: Obx(() => Text("当前页面：" + c.count.value.toString())),
     );
   }
 }

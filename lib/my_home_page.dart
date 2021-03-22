@@ -9,7 +9,12 @@ import 'package:flutter_bxsh/pages_view/shopping_cart/shopping_cart.dart';
 import 'package:flutter_bxsh/pages_view/membership_center/membership.dart';
 
 class MyHomePage extends StatelessWidget {
-  final List<Widget> _children = [Home(), Ification(),ShoppingCart(),Membership()];
+  final List<Widget> _children = [
+    Home(),
+    Ification(),
+    ShoppingCart(),
+    Membership()
+  ];
 
   @override
   Widget build(BuildContext context) {

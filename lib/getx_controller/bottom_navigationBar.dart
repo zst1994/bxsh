@@ -1,9 +1,14 @@
 import 'package:get/get.dart';
 
 class Controller extends GetxController {
-  var count = 0.obs;
+  RxInt count = 0.obs;
+  RxBool showload = false.obs;
 
   increment(int idx) {
     count.value = idx;
+  }
+
+  showLoad(bool show) {
+    showload.value = show;
   }
 }

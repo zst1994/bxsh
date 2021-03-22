@@ -33,6 +33,7 @@ dependencies:
   dio: ^3.0.10
   fluttertoast: ^7.1.8
   flutter_screenutil: ^4.0.3+2
+  flutter_loading: ^0.1.2
   get:
 
 dev_dependencies:

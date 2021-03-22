@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
                   visualDensity: VisualDensity.adaptivePlatformDensity,
                   bottomNavigationBarTheme: BottomNavigationBarThemeData(
                       selectedItemColor: Color(0xFFE50078),
-                      unselectedItemColor: Colors.black87,
+                      unselectedItemColor: Color(0xff707070),
                       selectedLabelStyle: TextStyle(fontSize: 26.sp),
                       unselectedLabelStyle: TextStyle(fontSize: 26.sp))),
               home: MyHomePage(),

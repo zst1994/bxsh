@@ -2,14 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bxsh/common/loading_view.dart';
 import 'package:flutter_bxsh/common/toast_view.dart';
 import 'package:flutter_bxsh/getx_controller/bottom_navigationBar.dart';
+import 'package:flutter_bxsh/http/dio_manager.dart';
+import 'package:flutter_bxsh/model/on_launch_mini_entity.dart';
 import 'package:get/get.dart';
 
 class Home extends StatelessWidget {
+  final Controller c = Get.put(Controller());
+
   @override
   Widget build(BuildContext context) {
-    final Controller c = Get.put(Controller());
     return FutureBuilder(
-        future: _onRefresh(),
+        future: _getEmptyContaine(),
         builder: (context, snapshot) {
           return ProgressDialog(
             loading: !snapshot.hasData,
@@ -20,11 +23,13 @@ class Home extends StatelessWidget {
         });
   }
 
-  Future _onRefresh() async {
-    await Future.delayed(Duration(seconds: 3), () {
-      print("1111111");
+  Future _getEmptyContaine() async {
+    await DioManager.getInstance().post<OnLaunchMiniEntity>(
+        "/baixing/wxmini/onLaunchMini", {}, onSuccess: (data) {
+      print("================${data.sharePic.pictureAddress}===============");
+    }, onError: (code, error) {
+      shortToast(error);
     });
-    shortToast('加载完成');
-    return "完成";
+    return "完成加载";
   }
 }

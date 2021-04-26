@@ -34,6 +34,8 @@ dependencies:
   fluttertoast: ^7.1.8
   flutter_screenutil: ^4.0.3+2
   flutter_loading: ^0.1.2
+  flutter_swiper: ^1.1.6
+  url_launcher: ^5.7.10
   get:
 
 dev_dependencies:

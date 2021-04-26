@@ -1,27 +1,24 @@
 import 'package:flutter_bxsh/model/on_launch_mini_entity.dart';
+import 'package:flutter_bxsh/generated/json/base/json_filed.dart';
 
 onLaunchMiniEntityFromJson(OnLaunchMiniEntity data, Map<String, dynamic> json) {
 	if (json['sharePic'] != null) {
-		data.sharePic = new OnLaunchMiniSharePic().fromJson(json['sharePic']);
+		data.sharePic = OnLaunchMiniSharePic().fromJson(json['sharePic']);
 	}
 	if (json['buyTime'] != null) {
 		data.buyTime = json['buyTime'].toString();
 	}
 	if (json['sendFee'] != null) {
-		data.sendFee = new OnLaunchMiniSendFee().fromJson(json['sendFee']);
+		data.sendFee = OnLaunchMiniSendFee().fromJson(json['sendFee']);
 	}
 	return data;
 }
 
 Map<String, dynamic> onLaunchMiniEntityToJson(OnLaunchMiniEntity entity) {
 	final Map<String, dynamic> data = new Map<String, dynamic>();
-	if (entity.sharePic != null) {
-		data['sharePic'] = entity.sharePic.toJson();
-	}
+	data['sharePic'] = entity.sharePic?.toJson();
 	data['buyTime'] = entity.buyTime;
-	if (entity.sendFee != null) {
-		data['sendFee'] = entity.sendFee.toJson();
-	}
+	data['sendFee'] = entity.sendFee?.toJson();
 	return data;
 }
 

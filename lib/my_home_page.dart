@@ -21,6 +21,7 @@ class MyHomePage extends StatelessWidget {
     final Controller c = Get.put(Controller());
 
     return Scaffold(
+      resizeToAvoidBottomPadding: false,
       appBar: AppBar(
         elevation: 0.0,
         centerTitle: true,
@@ -34,4 +35,3 @@ class MyHomePage extends StatelessWidget {
     );
   }
 }
-

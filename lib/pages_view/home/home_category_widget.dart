@@ -14,20 +14,24 @@ class HomeCategoryWidget extends StatelessWidget {
         return controller.category.length > 0
             ? Container(
                 width: double.infinity,
-                height: 180.w,
                 margin: EdgeInsets.symmetric(vertical: 10.w),
                 decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(10.w)),
                 child: GridView.count(
+                  // Container跟随GridView内容变化高度, shrinkWrap:true;
+                  shrinkWrap: true,
+                  // 取消滚动效果
+                  physics: NeverScrollableScrollPhysics(),
                   crossAxisCount: 4,
+                  childAspectRatio: 8 / 7,
                   children: List.generate(4, (i) {
                     return Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Container(
-                            width: 85.w,
+                            width: 90.w,
                             child: Image.network(
                               controller.category[i].image,
                               fit: BoxFit.fitWidth,

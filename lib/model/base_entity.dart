@@ -1,6 +1,6 @@
 import 'package:flutter_bxsh/generated/json/base/json_convert_content.dart';
 
-class BaseEntity<T> with JsonConvert<BaseEntity> {
+class BaseBean<T> with JsonConvert<BaseBean> {
   //  判断标示
   int code;
 
@@ -9,6 +9,10 @@ class BaseEntity<T> with JsonConvert<BaseEntity> {
 
   //显示数据（用户需要关心的数据）
   T data;
+
+}
+
+extension  is_ok on BaseBean{
 
   bool isOk() => code == CORRECT_CODE;
 

@@ -7,8 +7,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bxsh/common/loading_view.dart';
 import 'package:flutter_bxsh/common/toast_view.dart';
+import 'package:flutter_bxsh/generated/json/base_entity_helper.dart';
 import 'package:flutter_bxsh/model/base_entity.dart';
-import 'package:flutter_bxsh/model/base_entity_helper.dart';
 import 'my_http_log.dart';
 
 typedef SuccessCallback<T> = dynamic Function(T t);
@@ -137,9 +137,9 @@ class DioManager {
       return null;
     }
     try {
-      BaseEntity<T> baseWrap = BaseEntity<T>();
+      BaseBean<T> baseWrap = BaseBean<T>();
       var decode = json.decode(response.toString());
-      baseEntityFromJson(baseWrap, decode);
+      baseBeanFromJson(baseWrap, decode);
       if (T.toString() == "dynamic") {
         baseWrap.data = decode["data"];
       }

@@ -10,32 +10,33 @@ class SwiperWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final HomePageContentController homeController =
-        Get.put(HomePageContentController());
-
-    return Container(
-      width: double.infinity,
-      height: 350.w,
-      child: Swiper(
-        itemBuilder: (BuildContext context, int index) {
-          return Image.network(
-            homeController.slides[index].image,
-            fit: BoxFit.fill,
-          );
-        },
-        duration: 1000,
-        autoplay: true,
-        scrollDirection: Axis.horizontal,
-        itemCount: homeController.slides.length,
-        // 展示默认分页指示器
-        pagination: SwiperPagination(
-            builder: DotSwiperPaginationBuilder(
-          color: Colors.black54,
-          activeColor: Colors.white,
-        )),
-        // 展示默认分页按钮
-        // control: SwiperControl(),
-      ),
-    );
+    return GetBuilder<HomePageContentController>(builder: (controller) {
+      return controller.slides.length > 0
+          ? Container(
+              width: double.infinity,
+              height: 350.w,
+              child: Swiper(
+                itemBuilder: (BuildContext context, int index) {
+                  return Image.network(
+                    controller.slides[index].image,
+                    fit: BoxFit.fill,
+                  );
+                },
+                duration: 1000,
+                autoplay: true,
+                scrollDirection: Axis.horizontal,
+                itemCount: controller.slides.length,
+                // 展示默认分页指示器
+                pagination: SwiperPagination(
+                    builder: DotSwiperPaginationBuilder(
+                  color: Colors.black54,
+                  activeColor: Colors.white,
+                )),
+                // 展示默认分页按钮
+                // control: SwiperControl(),
+              ),
+            )
+          : Container();
+    });
   }
 }

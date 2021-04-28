@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bxsh/pages_view/home/advertesPicture_widget.dart';
 import 'package:flutter_bxsh/pages_view/home/home_category_widget.dart';
@@ -41,6 +43,7 @@ class Home extends StatelessWidget {
   Future _getHomePageContent() async {
     await DioManager.getInstance().post<HomePageContentEntity>(
         "/baixing/wxmini/homePageContent", {}, onSuccess: (data) {
+      print("=============$data============");
       homeController.setSlides(data.slides);
       homeController.setCategory(data.category);
       homeController.setAdvertesPicture(data.advertesPicture.pictureAddress);

@@ -1,5 +1,4 @@
 import 'package:flutter_bxsh/model/on_launch_mini_entity.dart';
-import 'package:flutter_bxsh/generated/json/base/json_filed.dart';
 
 onLaunchMiniEntityFromJson(OnLaunchMiniEntity data, Map<String, dynamic> json) {
 	if (json['sharePic'] != null) {

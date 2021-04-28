@@ -1,3 +1,4 @@
+import 'package:flutter_bxsh/model/home_page_content_entity.dart';
 import 'package:get/get.dart';
 
 class HomePageContentController extends GetxController {
@@ -5,6 +6,12 @@ class HomePageContentController extends GetxController {
   RxList category = [].obs;
   RxMap shopInfo = {}.obs;
   RxString advertesPicture = "".obs;
+
+  Rx<HomePageContentEntity> data;
+
+  setAll() {
+    
+  }
 
   setSlides(List newSlides) {
     slides.assignAll(newSlides);

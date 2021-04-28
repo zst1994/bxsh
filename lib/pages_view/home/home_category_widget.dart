@@ -27,7 +27,7 @@ class HomeCategoryWidget extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Container(
-                            width: 80.w,
+                            width: 85.w,
                             child: Image.network(
                               controller.category[i].image,
                               fit: BoxFit.fitWidth,

@@ -7,8 +7,14 @@ class HomePageContentController extends GetxController {
   RxList activityZone = [].obs;
   RxList recommend = [].obs;
   RxList floor = [].obs;
+  var homePageBelowConten = [
+    {'name': '1'},
+    {'name': '2'},
+  ].obs;
 
   RxMap shopInfo = {}.obs;
+
+  RxInt page = 0.obs;
 
   RxString advertesPicture = "".obs;
 
@@ -42,5 +48,14 @@ class HomePageContentController extends GetxController {
 
   setFloor(List data) {
     floor.assignAll(data);
+  }
+
+  addPage({int pageNum}) {
+    page.value = pageNum ?? this.page.value + 1;
+  }
+
+  setHomePageBelowConten(var data) {
+    homePageBelowConten.assignAll(data);
+    print('object==========${homePageBelowConten.length}');
   }
 }

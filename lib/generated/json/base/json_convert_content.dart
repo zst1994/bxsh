@@ -11,6 +11,8 @@ import 'package:flutter_bxsh/model/basic_picture_orders_sum_fsize_entity.dart';
 import 'package:flutter_bxsh/generated/json/basic_picture_orders_sum_fsize_entity_helper.dart';
 import 'package:flutter_bxsh/model/base_entity.dart';
 import 'package:flutter_bxsh/generated/json/base_entity_helper.dart';
+import 'package:flutter_bxsh/model/home_page_below_conten_entity.dart';
+import 'package:flutter_bxsh/generated/json/home_page_below_conten_entity_helper.dart';
 
 class JsonConvert<T> {
 	T fromJson(Map<String, dynamic> json) {
@@ -68,7 +70,9 @@ class JsonConvert<T> {
 			case BasicPictureOrdersSumFsizeEntity:
 				return basicPictureOrdersSumFsizeEntityFromJson(data as BasicPictureOrdersSumFsizeEntity, json) as T;
 			case BaseBean:
-				return baseBeanFromJson<T>(data as BaseBean, json) as T;    }
+				return baseBeanFromJson<T>(data as BaseBean, json) as T;
+			case HomePageBelowContenEntity:
+				return homePageBelowContenEntityFromJson(data as HomePageBelowContenEntity, json) as T;    }
     return data as T;
   }
 
@@ -120,6 +124,8 @@ class JsonConvert<T> {
 				return basicPictureOrdersSumFsizeEntityToJson(data as BasicPictureOrdersSumFsizeEntity);
 			case BaseBean:
 				return baseBeanToJson(data as BaseBean);
+			case HomePageBelowContenEntity:
+				return homePageBelowContenEntityToJson(data as HomePageBelowContenEntity);
 			}
 			return data as T;
 		}
@@ -172,6 +178,8 @@ class JsonConvert<T> {
 			return BasicPictureOrdersSumFsizeEntity().fromJson(json);
 		}	else if(type == (BaseBean).toString()){
 			return BaseBean().fromJson(json);
+		}	else if(type == (HomePageBelowContenEntity).toString()){
+			return HomePageBelowContenEntity().fromJson(json);
 		}	
 		return null;
 	}
@@ -224,6 +232,8 @@ class JsonConvert<T> {
 			return data.map<BasicPictureOrdersSumFsizeEntity>((e) => BasicPictureOrdersSumFsizeEntity().fromJson(e)).toList() as M;
 		}	else if(<BaseBean>[] is M){
 			return data.map<BaseBean>((e) => BaseBean().fromJson(e)).toList() as M;
+		}	else if(<HomePageBelowContenEntity>[] is M){
+			return data.map<HomePageBelowContenEntity>((e) => HomePageBelowContenEntity().fromJson(e)).toList() as M;
 		}
 		throw Exception("not fond");
 	}

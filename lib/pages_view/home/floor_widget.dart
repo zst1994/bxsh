@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:flutter_bxsh/getx_controller/homePageContent_getx.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart'; 
 
-double boxSize = 375.w;
+import 'package:flutter_bxsh/getx_controller/homePageContent_getx.dart';
 
 class FloorWidget extends StatelessWidget {
   const FloorWidget({Key key}) : super(key: key);

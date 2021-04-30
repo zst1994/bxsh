@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:flutter_bxsh/getx_controller/homePageContent_getx.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import 'package:flutter_bxsh/getx_controller/homePageContent_getx.dart';
 
 // 轮播图
 class SwiperWidget extends StatelessWidget {

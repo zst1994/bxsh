@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:flutter_bxsh/getx_controller/homePageContent_getx.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+import 'package:flutter_bxsh/getx_controller/homePageContent_getx.dart';
 
 class AdvertesPictureWidget extends StatelessWidget {
   const AdvertesPictureWidget({Key key}) : super(key: key);

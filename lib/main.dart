@@ -5,6 +5,7 @@ import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 import 'package:flutter_bxsh/my_home_page.dart';
 
+//Get有两个不同的状态管理器：简单的状态管理器（GetBuilder）和响应式状态管理器（GetX）
 void main() {
   runApp(MyApp());
 }

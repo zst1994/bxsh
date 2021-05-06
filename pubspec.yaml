@@ -32,7 +32,7 @@ dependencies:
   cupertino_icons: ^1.0.0
   dio: ^3.0.10
   fluttertoast: ^7.1.8
-  flutter_screenutil: ^4.0.3+2
+  flutter_screenutil: ^4.0.4+1
   flutter_loading: ^0.1.2
   flutter_swiper: ^1.1.6
   url_launcher: ^5.7.10

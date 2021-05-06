@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bxsh/common/regExp.dart';
+import 'package:flutter_bxsh/common/toast_view.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:flutter_bxsh/common/textStyle.dart';
+import 'package:get/get.dart';
 
 // 顶部搜索
 class SearchWidget extends StatelessWidget {
-  const SearchWidget({Key key}) : super(key: key);
+  TextEditingController controller = new TextEditingController(); //声明controller
 
   @override
   Widget build(BuildContext context) {
@@ -48,6 +51,7 @@ class SearchWidget extends StatelessWidget {
         child: ConstrainedBox(
           constraints: BoxConstraints(maxHeight: 70.w),
           child: TextField(
+            controller: controller,
             cursorWidth: 3.w,
             cursorRadius: Radius.circular(10.w),
             cursorColor: Theme.of(context).accentColor,
@@ -79,6 +83,7 @@ class SearchWidget extends StatelessWidget {
                 ),
                 //textField设置了外边框，textField的内容就会居中显示
                 contentPadding: EdgeInsets.symmetric(vertical: 0)),
+            onEditingComplete: () => _searchTap(context),
           ),
         ),
       ),
@@ -89,7 +94,7 @@ class SearchWidget extends StatelessWidget {
     return Padding(
         padding: EdgeInsets.symmetric(horizontal: 15.w),
         child: InkWell(
-          onTap: () {},
+          onTap: () => _searchTap(context),
           child: Container(
             alignment: Alignment.center,
             padding: EdgeInsets.symmetric(horizontal: 40.w, vertical: 15.w),
@@ -102,5 +107,17 @@ class SearchWidget extends StatelessWidget {
                 borderRadius: BorderRadius.all(Radius.circular(8.w))),
           ),
         ));
+  }
+
+  _searchTap(BuildContext context) {
+    String searchWords = stringTrimExp(controller.text);
+    if (searchWords.length > 0) {
+      // 隐藏键盘
+      FocusScope.of(context).requestFocus(FocusNode());
+      Get.toNamed("/searchGoods", arguments: {'text': searchWords});
+    } else {
+      shortToast('请输入关键词进行搜索');
+      controller.text = '';
+    }
   }
 }

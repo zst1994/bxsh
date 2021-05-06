@@ -19,8 +19,6 @@ class HomePageContentController extends GetxController {
 
   Rx<HomePageContentEntity> data;
 
-  setAll() {}
-
   setSlides(List newSlides) {
     slides.assignAll(newSlides);
   }

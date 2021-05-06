@@ -28,6 +28,7 @@ class Home extends StatelessWidget {
           return ProgressDialog(
             loading: !snapshot.hasData,
             child: SmartRefresher(
+              controller: _refreshController,
               enablePullDown: true,
               enablePullUp: true,
               header: WaterDropHeader(
@@ -64,7 +65,6 @@ class Home extends StatelessWidget {
                   );
                 },
               ),
-              controller: _refreshController,
               onRefresh: () => homeController.onRefresh(_refreshController),
               onLoading: () => homeController.onLoading(_refreshController),
               child: ListView(

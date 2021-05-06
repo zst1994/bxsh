@@ -40,34 +40,41 @@ class RecommendWidget extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             itemCount: controller.recommend.length,
             itemBuilder: (context, index) {
-              return Container(
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    border: Border(
-                        right:
-                            BorderSide(color: Color(0xffececec), width: 1.w))),
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(bottom: 10.w),
-                      child: Image.network(
-                        controller.recommend[index].image,
-                        fit: BoxFit.fitWidth,
-                        width: 240.w,
+              return InkWell(
+                onTap: () {
+                  Get.toNamed("/goodDetail", arguments: {
+                    'goodsId': controller.recommend[index].goodsId
+                  });
+                },
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      border: Border(
+                          right: BorderSide(
+                              color: Color(0xffececec), width: 1.w))),
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(bottom: 10.w),
+                        child: Image.network(
+                          controller.recommend[index].image,
+                          fit: BoxFit.fitWidth,
+                          width: 240.w,
+                        ),
                       ),
-                    ),
-                    Text(
-                      '￥' + controller.recommend[index].mallPrice.toString(),
-                      style: myTextStyle(26, 0xff333333, false),
-                    ),
-                    Text(
-                      '￥' + controller.recommend[index].price.toString(),
-                      style: TextStyle(
-                          fontSize: 26.sp,
-                          color: Color(0xff999999),
-                          decoration: TextDecoration.lineThrough),
-                    ),
-                  ],
+                      Text(
+                        '￥' + controller.recommend[index].mallPrice.toString(),
+                        style: myTextStyle(26, 0xff333333, false),
+                      ),
+                      Text(
+                        '￥' + controller.recommend[index].price.toString(),
+                        style: TextStyle(
+                            fontSize: 26.sp,
+                            color: Color(0xff999999),
+                            decoration: TextDecoration.lineThrough),
+                      ),
+                    ],
+                  ),
                 ),
               );
             }),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart'; 
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:flutter_bxsh/getx_controller/homePageContent_getx.dart';
 
@@ -25,35 +25,20 @@ class FloorWidget extends StatelessWidget {
                 children: [
                   Column(
                     children: [
-                      Image.network(
-                        controller.floor[i]['data'][0].image,
-                        fit: BoxFit.fitWidth,
-                        width: 375.w,
-                      ),
-                      Image.network(
-                        controller.floor[i]['data'][3].image,
-                        fit: BoxFit.fitWidth,
-                        width: 375.w,
-                      ),
+                      _floor(controller.floor[i]['data'][0].image,
+                          controller.floor[i]['data'][0].goodsId),
+                      _floor(controller.floor[i]['data'][3].image,
+                          controller.floor[i]['data'][3].goodsId),
                     ],
                   ),
                   Column(
                     children: [
-                      Image.network(
-                        controller.floor[i]['data'][1].image,
-                        fit: BoxFit.fitWidth,
-                        width: 375.w,
-                      ),
-                      Image.network(
-                        controller.floor[i]['data'][2].image,
-                        fit: BoxFit.fitWidth,
-                        width: 375.w,
-                      ),
-                      Image.network(
-                        controller.floor[i]['data'][4].image,
-                        fit: BoxFit.fitWidth,
-                        width: 375.w,
-                      ),
+                      _floor(controller.floor[i]['data'][1].image,
+                          controller.floor[i]['data'][1].goodsId),
+                      _floor(controller.floor[i]['data'][2].image,
+                          controller.floor[i]['data'][2].goodsId),
+                      _floor(controller.floor[i]['data'][4].image,
+                          controller.floor[i]['data'][4].goodsId),
                     ],
                   )
                 ],
@@ -63,5 +48,18 @@ class FloorWidget extends StatelessWidget {
         }),
       );
     });
+  }
+
+  Widget _floor(String imgUrl, String goodsId) {
+    return InkWell(
+      onTap: () {
+        Get.toNamed("/goodDetail", arguments: {'goodsId': goodsId});
+      },
+      child: Image.network(
+        imgUrl,
+        fit: BoxFit.fitWidth,
+        width: 375.w,
+      ),
+    );
   }
 }

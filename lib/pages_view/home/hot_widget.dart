@@ -24,45 +24,58 @@ class HotWidget extends StatelessWidget {
   Widget _hotBody(BuildContext context, HomePageContentController controller) {
     return Wrap(
         children: List.generate(controller.homePageBelowConten.length, (index) {
-      return Container(
-        width: 375.w,
-        alignment: Alignment.center,
-        color: Colors.white,
-        padding: EdgeInsets.only(bottom: 30.w),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.network(
-              controller.homePageBelowConten[index]['image'],
-              fit: BoxFit.fitWidth,
-              width: 300.w,
-            ),
-            SizedBox(
-              height: 20.w,
-            ),
-            Text(
-              "${controller.homePageBelowConten[index]['name']}",
-              style:
-                  myTextStyle(28, Theme.of(context).accentColor.value, false),
-            ),
-            SizedBox(
-              height: 20.w,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Text(
-                  "￥${controller.homePageBelowConten[index]['mallPrice']}",
-                  style: myTextStyle(28, 0xff333333, false),
+      return InkWell(
+        onTap: () {
+          Get.toNamed("/goodDetail", arguments: {
+            'goodsId': controller.homePageBelowConten[index]['goodsId']
+          });
+        },
+        child: Container(
+          width: 375.w,
+          alignment: Alignment.center,
+          color: Colors.white,
+          padding: EdgeInsets.only(bottom: 30.w),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.network(
+                controller.homePageBelowConten[index]['image'],
+                fit: BoxFit.fitWidth,
+                width: 300.w,
+              ),
+              SizedBox(
+                height: 20.w,
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20.w),
+                child: Text(
+                  "${controller.homePageBelowConten[index]['name']}",
+                  // 文字超出最大宽度显示省略号
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: myTextStyle(
+                      28, Theme.of(context).accentColor.value, false),
                 ),
-                Text(
-                  "￥${controller.homePageBelowConten[index]['price']}",
-                  style: myTextStyle(28, 0xff999999, false,
-                      decoration: TextDecoration.lineThrough),
-                )
-              ],
-            )
-          ],
+              ),
+              SizedBox(
+                height: 20.w,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Text(
+                    "￥${controller.homePageBelowConten[index]['mallPrice']}",
+                    style: myTextStyle(28, 0xff333333, false),
+                  ),
+                  Text(
+                    "￥${controller.homePageBelowConten[index]['price']}",
+                    style: myTextStyle(28, 0xff999999, false,
+                        decoration: TextDecoration.lineThrough),
+                  )
+                ],
+              )
+            ],
+          ),
         ),
       );
     }));

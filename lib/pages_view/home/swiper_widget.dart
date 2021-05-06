@@ -18,9 +18,16 @@ class SwiperWidget extends StatelessWidget {
               height: 350.w,
               child: Swiper(
                 itemBuilder: (BuildContext context, int index) {
-                  return Image.network(
-                    controller.slides[index].image,
-                    fit: BoxFit.fill,
+                  return InkWell(
+                    onTap: () {
+                      Get.toNamed("/goodDetail", arguments: {
+                        'goodsId': controller.slides[index].goodsId
+                      });
+                    },
+                    child: Image.network(
+                      controller.slides[index].image,
+                      fit: BoxFit.fill,
+                    ),
                   );
                 },
                 duration: 1000,

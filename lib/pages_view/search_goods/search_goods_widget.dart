@@ -26,7 +26,10 @@ class SearchGoodsWidget extends StatelessWidget {
       appBar: AppBar(
         elevation: 0.0,
         centerTitle: true,
-        title: Text(parameters['text']),
+        title: Text(
+          parameters['text'],
+          style: myTextStyle(34, 0xffffffff, true),
+        ),
       ),
       body: FutureBuilder(
           future: searchGoodsController.getSearchGoods(_refreshController),

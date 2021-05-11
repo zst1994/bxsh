@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bxsh/common/textStyle.dart';
 import 'package:get/get.dart';
 
 import 'package:flutter_bxsh/bottom_navigation_bar.dart';
@@ -25,7 +26,10 @@ class MyHomePage extends StatelessWidget {
       appBar: AppBar(
         elevation: 0.0,
         centerTitle: true,
-        title: Text('百姓生活+'),
+        title: Text(
+          '百姓生活+',
+          style: myTextStyle(34, 0xffffffff, true),
+        ),
       ),
       body: Center(
         child: Obx(() => _children[c.count.value]),

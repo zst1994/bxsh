@@ -16,6 +16,12 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    List<GetPage> getPages = [
+      GetPage(name: '/', page: () => MyHomePage()),
+      GetPage(name: '/searchGoods', page: () => SearchGoodsWidget()),
+      GetPage(name: '/goodDetail', page: () => GoodDetailWidget()),
+    ];
+
     // 方式二
     // ScreenUtil.init(
     //     BoxConstraints(
@@ -25,12 +31,6 @@ class MyApp extends StatelessWidget {
     //     orientation: Orientation.portrait);
 
     // 方式一
-    List<GetPage> getPages = [
-      GetPage(name: '/', page: () => MyHomePage()),
-      GetPage(name: '/searchGoods', page: () => SearchGoodsWidget()),
-      GetPage(name: '/goodDetail', page: () => GoodDetailWidget()),
-    ];
-
     return ScreenUtilInit(
         designSize: Size(750, 1334),
         allowFontScaling: true,

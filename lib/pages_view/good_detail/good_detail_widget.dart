@@ -21,8 +21,11 @@ class GoodDetailWidget extends StatefulWidget {
 class _GoodDetailWidgetState extends State<GoodDetailWidget>
     with TickerProviderStateMixin, AutomaticKeepAliveClientMixin {
   List _spList = ["详情", "评论"];
+  bool scroBool = false;
 
   TabController _tabController;
+  ScrollController _listViewController = new ScrollController();
+  ScrollController _singleCrotroller = new ScrollController();
 
   @protected
   bool get wantKeepAlive => true;
@@ -34,9 +37,26 @@ class _GoodDetailWidgetState extends State<GoodDetailWidget>
     _tabController = TabController(
         initialIndex: 0, length: _spList.length, vsync: this); // 直接传this
 
-    if (_tabController.indexIsChanging) {
-      print("---->indexch");
-    }
+    _listViewController.addListener(() {
+      if (_listViewController.offset ==
+          _listViewController.position.maxScrollExtent) {
+        setState(() {
+          scroBool = true;
+        });
+      } else if (_listViewController.offset == 0.0) {
+        setState(() {
+          scroBool = false;
+        });
+      }
+    });
+
+    _singleCrotroller.addListener(() {
+      if (_singleCrotroller.offset == 0.0) {
+        setState(() {
+          scroBool = false;
+        });
+      }
+    });
   }
 
   @override
@@ -62,19 +82,59 @@ class _GoodDetailWidgetState extends State<GoodDetailWidget>
       body: FutureBuilder(
           future: goodDetailController.getGoodDetail(parameters['goodsId']),
           builder: (context, snapshot) {
+            final sizeWidth = MediaQuery.of(context).size.width;
+
             return ProgressDialog(
-              loading: !snapshot.hasData,
-              child: isEmpty(goodDetailController.goodDetailData)
-                  ? Container()
-                  : ListView(
-                      children: [
-                        ShopGoodsImgWidget(),
-                        ShopGoodsInfoWidget(),
-                        GoodTipWidget(),
-                        GoodTabViewWidget(_tabController, _spList)
-                      ],
-                    ),
-            );
+                loading: !snapshot.hasData,
+                child: isEmpty(goodDetailController.goodDetailData)
+                    ? Container()
+                    : Stack(
+                        children: [
+                          Container(
+                            width: double.infinity,
+                            height: double.infinity,
+                            padding: EdgeInsets.only(bottom: 120.w),
+                            child: ListView(
+                              controller: _listViewController,
+                              children: [
+                                ShopGoodsImgWidget(),
+                                ShopGoodsInfoWidget(),
+                                GoodTipWidget(),
+                                GoodTabViewWidget(_tabController,
+                                    _singleCrotroller, scroBool, _spList),
+                              ],
+                            ),
+                          ),
+                          // Postioned限制left:0,right:0,这样就充满父Widget 而且不会报错
+                          Positioned(
+                              left: 0,
+                              right: 0,
+                              bottom: 0,
+                              child: Container(
+                                width: sizeWidth,
+                                height: 120.w,
+                                child: Row(
+                                  children: [
+                                    Container(
+                                      width: sizeWidth * 0.2,
+                                      height: 120.w,
+                                      color: Colors.red,
+                                    ),
+                                    Container(
+                                      width: sizeWidth * 0.4,
+                                      height: 120.w,
+                                      color: Colors.orange,
+                                    ),
+                                    Container(
+                                      width: sizeWidth * 0.4,
+                                      height: 120.w,
+                                      color: Colors.green,
+                                    ),
+                                  ],
+                                ),
+                              ))
+                        ],
+                      ));
           }),
     );
   }

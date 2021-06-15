@@ -74,7 +74,8 @@ class HomePageContentController extends GetxController {
   // 获取数据
   Future getHomePageContent() async {
     await DioManager.getInstance().post<HomePageContentEntity>(
-        "/baixing/wxmini/homePageContent", {}, onSuccess: (data) {
+        "/baixing/wxmini/homePageContent", {"lon": 114.24779, "lat": 22.71991},
+        onSuccess: (data) {
       setSlides(data.slides);
       setCategory(data.category);
       setAdvertesPicture(data.advertesPicture.pictureAddress);

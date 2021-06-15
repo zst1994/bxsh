@@ -42,7 +42,8 @@ class SearchGoodsController extends GetxController {
   Future getSearchGoods(RefreshController _refreshController) async {
     await DioManager.getInstance().post("/baixing/wxmini/searchGoods", {
       'page': searchGoodsPage.value,
-      'text': searchWord.value
+      'text': searchWord.value,
+      'categoryId': ''
     }, onSuccess: (data) {
       if (data != null && data.length > 0) {
         List newListData = [];

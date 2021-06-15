@@ -1,4 +1,4 @@
-import 'package:flutter_bxsh/common/toast_view.dart';
+import 'package:flutter_bxsh/components/toast_view.dart';
 import 'package:flutter_bxsh/http/dio_manager.dart';
 import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
@@ -53,12 +53,12 @@ class SearchGoodsController extends GetxController {
         // 底部指示器加载完成
         _refreshController.loadComplete();
       } else {
-        shortToast('暂无更多数据');
+        CustomToast.shortToast('暂无更多数据');
         // 底部指示器进入一个没有更多数据的状态
         _refreshController.loadNoData();
       }
     }, onError: (code, error) {
-      shortToast(error);
+      CustomToast.shortToast(error);
     });
     return "完成加载";
   }

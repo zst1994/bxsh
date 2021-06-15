@@ -1,4 +1,4 @@
-import 'package:flutter_bxsh/common/toast_view.dart';
+import 'package:flutter_bxsh/components/toast_view.dart';
 import 'package:flutter_bxsh/http/dio_manager.dart';
 import 'package:flutter_bxsh/model/home_page_content_entity.dart';
 import 'package:get/get.dart';
@@ -99,7 +99,7 @@ class HomePageContentController extends GetxController {
         ..add({'floor': data.floor3Pic, 'data': data.floor3});
       setFloor(floor);
     }, onError: (code, error) {
-      shortToast(error);
+      CustomToast.shortToast(error);
     });
     return "完成加载";
   }
@@ -117,12 +117,12 @@ class HomePageContentController extends GetxController {
         // 底部指示器加载完成
         _refreshController.loadComplete();
       } else {
-        shortToast('暂无更多数据');
+        CustomToast.shortToast('暂无更多数据');
         // 底部指示器进入一个没有更多数据的状态
         _refreshController.loadNoData();
       }
     }, onError: (code, error) {
-      shortToast(error);
+      CustomToast.shortToast(error);
     });
     return "完成加载";
   }

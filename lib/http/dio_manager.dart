@@ -5,8 +5,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_bxsh/common/loading_view.dart';
-import 'package:flutter_bxsh/common/toast_view.dart';
+import 'package:flutter_bxsh/components/loading_view.dart';
+import 'package:flutter_bxsh/components/toast_view.dart';
 import 'package:flutter_bxsh/generated/json/base_entity_helper.dart';
 import 'package:flutter_bxsh/model/base_entity.dart';
 import 'my_http_log.dart';
@@ -123,7 +123,7 @@ class DioManager {
           error.type == DioErrorType.RESPONSE) {
         errorResponse.statusCode = ResultCode.CONNECT_TIMEOUT;
         errorResponse.statusMessage = "请求超时";
-        shortToast("请求已超时,稍后重试");
+      CustomToast.shortToast("请求已超时,稍后重试");
       } else if (error.type == DioErrorType.RECEIVE_TIMEOUT) {
         // 一般服务器错误
         errorResponse.statusCode = ResultCode.RECEIVE_TIMEOUT;
@@ -150,13 +150,13 @@ class DioManager {
         }
         switch (baseWrap.code) {
           case 107:
-            shortToast("激活失效,请重新激活");
+            CustomToast.shortToast("激活失效,请重新激活");
             if (onError != null) {
               onError(baseWrap.code, "激活失效,请重新激活");
             }
             break;
           case 300:
-            shortToast("令牌失效,请重新登录");
+            CustomToast.shortToast("令牌失效,请重新登录");
             if (onError != null) {
               onError(baseWrap.code, "令牌失效,请重新登录");
             }
@@ -165,7 +165,7 @@ class DioManager {
             if (onError != null) {
               onError(baseWrap.code, baseWrap.message);
             }
-            shortToast(baseWrap.message);
+            CustomToast.shortToast(baseWrap.message);
         }
         return null;
       } else {

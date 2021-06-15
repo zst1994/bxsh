@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bxsh/common/textStyle.dart';
+import 'package:flutter_bxsh/components/diff_appBar_height.dart';
 import 'package:get/get.dart';
 
 import 'package:flutter_bxsh/bottom_navigation_bar.dart';
@@ -19,20 +19,17 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Controller c = Get.put(Controller());
+    final Controller _getC = Get.put(Controller());
 
     return Scaffold(
       resizeToAvoidBottomPadding: false,
-      appBar: AppBar(
-        elevation: 0.0,
-        centerTitle: true,
-        title: Text(
-          '百姓生活+',
-          style: myTextStyle(34, 0xffffffff, true),
-        ),
+      appBar: DiffAppBarHeight(
+        appBarTitle: "百姓生活+",
+        leadingBool: false,
+        leadingTapResult: {},
       ),
       body: Center(
-        child: Obx(() => _children[c.count.value]),
+        child: Obx(() => _children[_getC.count.value]),
       ),
       bottomNavigationBar:
           HomePageBottomNavigationBar(), // This trailing comma makes auto-formatting nicer for build methods.

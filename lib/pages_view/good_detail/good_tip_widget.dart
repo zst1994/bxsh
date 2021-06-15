@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'package:flutter_bxsh/common/textStyle.dart';
+import 'package:flutter_bxsh/components/textStyle.dart';
 
 class GoodTipWidget extends StatelessWidget {
   const GoodTipWidget({Key key}) : super(key: key);

@@ -6,10 +6,10 @@ import 'package:flutter_bxsh/getx_controller/bottom_navigationBar.dart';
 class Ification extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final Controller c = Get.put(Controller());
+    final Controller _getC = Get.put(Controller());
 
     return Center(
-      child: Obx(() => Text(c.count.value.toString())),
+      child: Obx(() => Text(_getC.count.value.toString())),
     );
   }
 }

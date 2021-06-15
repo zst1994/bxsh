@@ -3,8 +3,8 @@ import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'package:flutter_bxsh/common/loading_view.dart';
-import 'package:flutter_bxsh/common/textStyle.dart';
+import 'package:flutter_bxsh/components/textStyle.dart';
+import 'package:flutter_bxsh/components/loading_view.dart';
 import 'package:flutter_bxsh/getx_controller/searchGoods_getx.dart';
 
 class SearchGoodsWidget extends StatelessWidget {

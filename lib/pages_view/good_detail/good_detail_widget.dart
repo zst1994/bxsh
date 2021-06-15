@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bxsh/common/textStyle.dart';
-import 'package:flutter_bxsh/pages_view/good_detail/good_tabView_widget.dart';
-import 'package:flutter_bxsh/pages_view/good_detail/good_tip_widget.dart';
-import 'package:flutter_bxsh/pages_view/good_detail/shopGoodsInfo_widget.dart';
 import 'package:get/get.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'package:flutter_bxsh/components/img_asset.dart';
+import 'package:flutter_bxsh/components/textStyle.dart';
+import 'package:flutter_bxsh/components/loading_view.dart';
+import 'package:flutter_bxsh/pages_view/good_detail/good_tabView_widget.dart';
+import 'package:flutter_bxsh/pages_view/good_detail/good_tip_widget.dart';
+import 'package:flutter_bxsh/pages_view/good_detail/shopGoodsInfo_widget.dart';
 import 'package:flutter_bxsh/common/isEmpty.dart';
-import 'package:flutter_bxsh/common/loading_view.dart';
 import 'package:flutter_bxsh/getx_controller/good_detail_getx.dart';
 import 'package:flutter_bxsh/pages_view/good_detail/shopGoodsImg_widget.dart';
 
@@ -70,7 +71,7 @@ class _GoodDetailWidgetState extends State<GoodDetailWidget>
         elevation: 0.0,
         centerTitle: true,
         title: Obx(() => Text(
-              isEmpty(goodDetailController.goodDetailData)
+              Empty.isEmpty(goodDetailController.goodDetailData)
                   ? ''
                   : goodDetailController.goodDetailData['goodInfo']
                       ['goodsName'],
@@ -82,11 +83,11 @@ class _GoodDetailWidgetState extends State<GoodDetailWidget>
       body: FutureBuilder(
           future: goodDetailController.getGoodDetail(parameters['goodsId']),
           builder: (context, snapshot) {
-            final sizeWidth = MediaQuery.of(context).size.width;
+            final double sizeWidth = MediaQuery.of(context).size.width;
 
             return ProgressDialog(
                 loading: !snapshot.hasData,
-                child: isEmpty(goodDetailController.goodDetailData)
+                child: Empty.isEmpty(goodDetailController.goodDetailData)
                     ? Container()
                     : Stack(
                         children: [
@@ -95,6 +96,7 @@ class _GoodDetailWidgetState extends State<GoodDetailWidget>
                             height: double.infinity,
                             padding: EdgeInsets.only(bottom: 120.w),
                             child: ListView(
+                              shrinkWrap: true,
                               controller: _listViewController,
                               children: [
                                 ShopGoodsImgWidget(),
@@ -105,37 +107,59 @@ class _GoodDetailWidgetState extends State<GoodDetailWidget>
                               ],
                             ),
                           ),
-                          // Postioned限制left:0,right:0,这样就充满父Widget 而且不会报错
-                          Positioned(
-                              left: 0,
-                              right: 0,
-                              bottom: 0,
-                              child: Container(
-                                width: sizeWidth,
-                                height: 120.w,
-                                child: Row(
-                                  children: [
-                                    Container(
-                                      width: sizeWidth * 0.2,
-                                      height: 120.w,
-                                      color: Colors.red,
-                                    ),
-                                    Container(
-                                      width: sizeWidth * 0.4,
-                                      height: 120.w,
-                                      color: Colors.orange,
-                                    ),
-                                    Container(
-                                      width: sizeWidth * 0.4,
-                                      height: 120.w,
-                                      color: Colors.green,
-                                    ),
-                                  ],
-                                ),
-                              ))
+                          _addShopCarBtn(sizeWidth)
                         ],
                       ));
           }),
     );
+  }
+
+  Widget _addShopCarBtn(double sizeWidth) {
+    // Postioned限制left:0,right:0,这样就充满父Widget 而且不会报错
+    return Positioned(
+        left: 0,
+        right: 0,
+        bottom: 0,
+        child: Container(
+          width: sizeWidth,
+          height: 120.w,
+          child: Row(
+            children: [
+              Container(
+                width: sizeWidth * 0.2,
+                height: 120.w,
+                color: Colors.white,
+                child: Center(
+                    child: ImgAsset(
+                  imgUrl: 'assets/images/shop_cart.webp',
+                  imgW: 60,
+                  fit: BoxFit.fitWidth,
+                )),
+              ),
+              Container(
+                width: sizeWidth * 0.4,
+                height: 120.w,
+                color: Colors.green,
+                child: Center(
+                  child: Text(
+                    '加入购物车',
+                    style: myTextStyle(30, 0xffffffff, false),
+                  ),
+                ),
+              ),
+              Container(
+                width: sizeWidth * 0.4,
+                height: 120.w,
+                color: Colors.red,
+                child: Center(
+                  child: Text(
+                    '立即购买',
+                    style: myTextStyle(30, 0xffffffff, false),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ));
   }
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_bxsh/components/img_asset.dart';
 import 'package:get/get.dart';
 
 import 'package:flutter_bxsh/getx_controller/bottom_navigationBar.dart';
@@ -14,22 +14,20 @@ class HomePageBottomNavigationBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Controller getxController = Get.put(Controller());
+    final Controller _getC = Get.put(Controller());
 
     final List<BottomNavigationBarItem> bottomNavItems =
         List.generate(bottomNavigationData.length, (index) {
       return BottomNavigationBarItem(
         backgroundColor: Colors.white,
-        activeIcon: Image.asset(
-          'assets/images/' + bottomNavigationData[index]['ImgKey'] + '_sel.png',
-          width: 48.w,
-          height: 48.w,
-        ),
-        icon: Image.asset(
-          'assets/images/' + bottomNavigationData[index]['ImgKey'] + '.png',
-          width: 48.w,
-          height: 48.w,
-        ),
+        activeIcon: ImgAsset(
+            imgUrl: 'assets/images/' +
+                bottomNavigationData[index]['ImgKey'] +
+                '_sel.webp'),
+        icon: ImgAsset(
+            imgUrl: 'assets/images/' +
+                bottomNavigationData[index]['ImgKey'] +
+                '.webp'),
         label: bottomNavigationData[index]['text'],
       );
     });
@@ -38,9 +36,9 @@ class HomePageBottomNavigationBar extends StatelessWidget {
           // 添加type属性解决字体不显示问题
           type: BottomNavigationBarType.fixed,
           items: bottomNavItems,
-          currentIndex: getxController.count.value,
+          currentIndex: _getC.count.value,
           onTap: (int index) {
-            getxController.increment(index);
+            _getC.increment(index);
           },
         ));
   }

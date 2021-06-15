@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bxsh/common/formatDate.dart';
-import 'package:flutter_bxsh/common/textStyle.dart';
-import 'package:flutter_bxsh/getx_controller/good_detail_getx.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+
+import 'package:flutter_bxsh/common/formatDate.dart';
+import 'package:flutter_bxsh/components/textStyle.dart';
+import 'package:flutter_bxsh/getx_controller/good_detail_getx.dart';
 
 class GoodTabViewWidget extends StatelessWidget {
   TabController _tabController;
@@ -61,10 +62,9 @@ class GoodTabViewWidget extends StatelessWidget {
                     child: Column(
                       children: [
                         Html(
-                            shrinkWrap: true,
-                            customRender: {},
-                            data: goodDetailController
-                                .goodDetailData['goodInfo']['goodsDetail']),
+                          data: goodDetailController.goodDetailData['goodInfo']
+                              ['goodsDetail'],
+                        ),
                         _bottomImg(goodDetailController
                                 .goodDetailData['advertesPicture']
                             ['PICTURE_ADDRESS'])
@@ -109,7 +109,7 @@ class GoodTabViewWidget extends StatelessWidget {
                                         height: 10.w,
                                       ),
                                       Text(
-                                        formatDate(goodDetailController
+                                        Format.formatDate(goodDetailController
                                                 .goodDetailData['goodComments']
                                             [index]['discussTime']),
                                         style:

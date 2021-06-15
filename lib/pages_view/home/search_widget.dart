@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bxsh/common/regExp.dart';
-import 'package:flutter_bxsh/common/toast_view.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import 'package:flutter_bxsh/common/textStyle.dart';
 import 'package:get/get.dart';
+
+import 'package:flutter_bxsh/common/regExp.dart';
+import 'package:flutter_bxsh/components/img_asset.dart';
+import 'package:flutter_bxsh/components/textStyle.dart';
+import 'package:flutter_bxsh/components/toast_view.dart';
 
 // 顶部搜索
 class SearchWidget extends StatelessWidget {
@@ -30,13 +31,12 @@ class SearchWidget extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 10.w),
       child: InkWell(
-        onTap: () {},
-        child: Image.asset(
-          'assets/images/location.png',
-          width: 45.w,
-          fit: BoxFit.fitWidth,
-        ),
-      ),
+          onTap: () {},
+          child: ImgAsset(
+            imgUrl: 'assets/images/location.webp',
+            imgW: 45,
+            fit: BoxFit.fitWidth,
+          )),
     );
   }
 
@@ -110,13 +110,13 @@ class SearchWidget extends StatelessWidget {
   }
 
   _searchTap(BuildContext context) {
-    String searchWords = stringTrimExp(controller.text);
+    String searchWords = Regular.stringTrimExp(controller.text);
     if (searchWords.length > 0) {
       // 隐藏键盘
       FocusScope.of(context).requestFocus(FocusNode());
       Get.toNamed("/searchGoods", arguments: {'text': searchWords});
     } else {
-      shortToast('请输入关键词进行搜索');
+      CustomToast.shortToast('请输入关键词进行搜索');
       controller.text = '';
     }
   }

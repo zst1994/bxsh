@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
-import 'package:flutter_bxsh/common/textStyle.dart';
+import 'package:flutter_bxsh/components/textStyle.dart';
+import 'package:flutter_bxsh/components/loading_view.dart';
 import 'package:flutter_bxsh/pages_view/home/activity_zone_widget.dart';
 import 'package:flutter_bxsh/pages_view/home/advertesPicture_widget.dart';
 import 'package:flutter_bxsh/pages_view/home/floor_widget.dart';
 import 'package:flutter_bxsh/pages_view/home/home_category_widget.dart';
 import 'package:flutter_bxsh/pages_view/home/hot_widget.dart';
 import 'package:flutter_bxsh/pages_view/home/recommend_widget.dart';
-import 'package:flutter_bxsh/common/loading_view.dart';
 import 'package:flutter_bxsh/getx_controller/homePageContent_getx.dart';
 import 'package:flutter_bxsh/pages_view/home/search_widget.dart';
 import 'package:flutter_bxsh/pages_view/home/swiper_widget.dart';

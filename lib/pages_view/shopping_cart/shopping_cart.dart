@@ -3,12 +3,12 @@ import 'package:flutter_bxsh/getx_controller/bottom_navigationBar.dart';
 import 'package:get/get.dart';
 
 class ShoppingCart extends StatelessWidget {
-    @override
-    Widget build(BuildContext context) {
-        final Controller c = Get.put(Controller());
+  @override
+  Widget build(BuildContext context) {
+    final Controller _getC = Get.put(Controller());
 
-        return Center(
-            child: Obx(() => Text(c.count.value.toString())),
-        );
-    }
+    return Center(
+      child: Obx(() => Text(_getC.count.value.toString())),
+    );
+  }
 }

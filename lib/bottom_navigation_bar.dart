@@ -14,7 +14,7 @@ class HomePageBottomNavigationBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Controller _getC = Get.put(Controller());
+    final BottomNavController _getC = Get.put(BottomNavController());
 
     final List<BottomNavigationBarItem> bottomNavItems =
         List.generate(bottomNavigationData.length, (index) {

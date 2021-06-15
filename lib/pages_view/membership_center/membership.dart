@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 class Membership extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final Controller _getC = Get.put(Controller());
+    final BottomNavController _getC = Get.put(BottomNavController());
 
     return Center(
       child: Obx(() => Text(_getC.count.value.toString())),

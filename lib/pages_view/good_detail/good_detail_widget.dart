@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bxsh/components/diff_appBar_height.dart';
 import 'package:get/get.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -67,19 +68,18 @@ class _GoodDetailWidgetState extends State<GoodDetailWidget>
         Get.put(GoodDetailController());
 
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0.0,
-        centerTitle: true,
-        title: Obx(() => Text(
-              Empty.isEmpty(goodDetailController.goodDetailData)
-                  ? ''
-                  : goodDetailController.goodDetailData['goodInfo']
-                      ['goodsName'],
-              style: myTextStyle(34, 0xffffffff, true),
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-            )),
-      ),
+      appBar: DiffAppBarHeight(
+          customTitleBool: true,
+          customTitleWidget: Obx(() => Text(
+                Empty.isEmpty(goodDetailController.goodDetailData)
+                    ? ''
+                    : goodDetailController.goodDetailData['goodInfo']
+                        ['goodsName'],
+                style: myTextStyle(34, 0xffffffff, true),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              )),
+          leadingTapResult: {}),
       body: FutureBuilder(
           future: goodDetailController.getGoodDetail(parameters['goodsId']),
           builder: (context, snapshot) {

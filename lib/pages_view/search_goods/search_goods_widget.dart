@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bxsh/components/diff_appBar_height.dart';
 import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -23,14 +24,8 @@ class SearchGoodsWidget extends StatelessWidget {
     searchGoodsController.setSearchWord(parameters['text']);
 
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0.0,
-        centerTitle: true,
-        title: Text(
-          parameters['text'],
-          style: myTextStyle(34, 0xffffffff, true),
-        ),
-      ),
+      appBar: DiffAppBarHeight(
+          appBarTitle: parameters['text'], leadingTapResult: {}),
       body: FutureBuilder(
           future: searchGoodsController.getSearchGoods(_refreshController),
           builder: (context, snapshot) {

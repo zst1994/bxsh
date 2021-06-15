@@ -19,7 +19,7 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Controller _getC = Get.put(Controller());
+    final BottomNavController _getC = Get.put(BottomNavController());
 
     return Scaffold(
       resizeToAvoidBottomPadding: false,

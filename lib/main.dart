@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/physics.dart';
+import 'package:flutter_bxsh/pages_view/class_ification/ification.dart';
 import 'package:flutter_bxsh/pages_view/good_detail/good_detail_widget.dart';
 import 'package:flutter_bxsh/pages_view/search_goods/search_goods_widget.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -18,6 +19,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     List<GetPage> getPages = [
       GetPage(name: '/', page: () => MyHomePage()),
+      GetPage(name: '/ification', page: () => Ification()),
       GetPage(name: '/searchGoods', page: () => SearchGoodsWidget()),
       GetPage(name: '/goodDetail', page: () => GoodDetailWidget()),
     ];

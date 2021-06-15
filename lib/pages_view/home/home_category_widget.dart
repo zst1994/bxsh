@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bxsh/getx_controller/bottom_navigationBar.dart';
 import 'package:get/get.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -10,6 +11,8 @@ class HomeCategoryWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final BottomNavController _bnc = Get.put(BottomNavController());
+
     return GetBuilder<HomePageContentController>(
       builder: (_getC) {
         return _getC.category.length > 0
@@ -27,24 +30,29 @@ class HomeCategoryWidget extends StatelessWidget {
                   crossAxisCount: 4,
                   childAspectRatio: 8 / 7,
                   children: List.generate(4, (i) {
-                    return Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Container(
-                            width: 90.w,
-                            child: Image.network(
-                              _getC.category[i].image,
-                              fit: BoxFit.fitWidth,
-                            )),
-                        SizedBox(
-                          height: 15.w,
-                        ),
-                        Text(
-                          _getC.category[i].mallCategoryName,
-                          style: myTextStyle(26, 0xff333333, false),
-                        )
-                      ],
+                    return GestureDetector(
+                      onTap: () {
+                        _bnc.increment(1);
+                      },
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Container(
+                              width: 90.w,
+                              child: Image.network(
+                                _getC.category[i].image,
+                                fit: BoxFit.fitWidth,
+                              )),
+                          SizedBox(
+                            height: 15.w,
+                          ),
+                          Text(
+                            _getC.category[i].mallCategoryName,
+                            style: myTextStyle(26, 0xff333333, false),
+                          )
+                        ],
+                      ),
                     );
                   }),
                 ),

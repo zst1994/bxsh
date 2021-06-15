@@ -9,25 +9,25 @@ import 'package:flutter_bxsh/components/loading_view.dart';
 import 'package:flutter_bxsh/getx_controller/searchGoods_getx.dart';
 
 class SearchGoodsWidget extends StatelessWidget {
-  const SearchGoodsWidget({Key key}) : super(key: key);
+  SearchGoodsWidget({Key key}) : super(key: key);
+
+  final SearchGoodsController searchGoodsGetx =
+      Get.put(SearchGoodsController());
+
+  RefreshController _refreshController =
+      RefreshController(initialRefresh: false);
+
+  Map parameters = Get.arguments;
 
   @override
   Widget build(BuildContext context) {
-    final SearchGoodsController searchGoodsController =
-        Get.put(SearchGoodsController());
-
-    RefreshController _refreshController =
-        RefreshController(initialRefresh: false);
-
-    Map parameters = Get.arguments;
-
-    searchGoodsController.setSearchWord(parameters['text']);
+    searchGoodsGetx.setSearchWord(parameters['text']);
 
     return Scaffold(
       appBar: DiffAppBarHeight(
           appBarTitle: parameters['text'], leadingTapResult: {}),
       body: FutureBuilder(
-          future: searchGoodsController.getSearchGoods(_refreshController),
+          future: searchGoodsGetx.getSearchGoods(_refreshController),
           builder: (context, snapshot) {
             return ProgressDialog(
               loading: !snapshot.hasData,
@@ -71,62 +71,68 @@ class SearchGoodsWidget extends StatelessWidget {
                     );
                   },
                 ),
-                onRefresh: () =>
-                    searchGoodsController.onRefresh(_refreshController),
-                onLoading: () =>
-                    searchGoodsController.onLoading(_refreshController),
+                onRefresh: () => searchGoodsGetx.onRefresh(_refreshController),
+                onLoading: () => searchGoodsGetx.onLoading(_refreshController),
                 child: Wrap(
                     spacing: 10.w,
                     runSpacing: 10.w,
                     children: List.generate(
-                        searchGoodsController.searchGoodsList.length, (index) {
-                      return Container(
-                        width: 370.w,
-                        alignment: Alignment.center,
-                        color: Colors.white,
-                        padding: EdgeInsets.only(bottom: 30.w),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Image.network(
-                              searchGoodsController.searchGoodsList[index]
-                                  ['image'],
-                              fit: BoxFit.fitWidth,
-                              width: 300.w,
-                            ),
-                            SizedBox(
-                              height: 20.w,
-                            ),
-                            Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 20.w),
-                              child: Text(
-                                "${searchGoodsController.searchGoodsList[index]['goodsName']}",
-                                // 文字超出最大宽度显示省略号
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
-                                // 文字超出最大宽度显示省略号
-                                style: myTextStyle(28,
-                                    Theme.of(context).accentColor.value, false),
+                        searchGoodsGetx.searchGoodsList.length, (index) {
+                      return GestureDetector(
+                        onTap: () => Get.toNamed("/goodDetail", arguments: {
+                          'goodsId': searchGoodsGetx.searchGoodsList[index]
+                              ['goodsId']
+                        }),
+                        child: Container(
+                          width: 370.w,
+                          alignment: Alignment.center,
+                          color: Colors.white,
+                          padding: EdgeInsets.only(bottom: 30.w),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Image.network(
+                                searchGoodsGetx.searchGoodsList[index]['image'],
+                                fit: BoxFit.fitWidth,
+                                width: 300.w,
                               ),
-                            ),
-                            SizedBox(
-                              height: 20.w,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                Text(
-                                  "￥${searchGoodsController.searchGoodsList[index]['PRESENT_PRICE']}",
-                                  style: myTextStyle(28, 0xff333333, false),
+                              SizedBox(
+                                height: 20.w,
+                              ),
+                              Padding(
+                                padding: EdgeInsets.symmetric(horizontal: 20.w),
+                                child: Text(
+                                  "${searchGoodsGetx.searchGoodsList[index]['goodsName']}",
+                                  // 文字超出最大宽度显示省略号
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                  // 文字超出最大宽度显示省略号
+                                  style: myTextStyle(
+                                      28,
+                                      Theme.of(context).accentColor.value,
+                                      false),
                                 ),
-                                Text(
-                                  "￥${searchGoodsController.searchGoodsList[index]['price']}",
-                                  style: myTextStyle(28, 0xff999999, false,
-                                      decoration: TextDecoration.lineThrough),
-                                )
-                              ],
-                            )
-                          ],
+                              ),
+                              SizedBox(
+                                height: 20.w,
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Text(
+                                    "￥${searchGoodsGetx.searchGoodsList[index]['PRESENT_PRICE']}",
+                                    style: myTextStyle(28, 0xff333333, false),
+                                  ),
+                                  Text(
+                                    "￥${searchGoodsGetx.searchGoodsList[index]['price']}",
+                                    style: myTextStyle(28, 0xff999999, false,
+                                        decoration: TextDecoration.lineThrough),
+                                  )
+                                ],
+                              )
+                            ],
+                          ),
                         ),
                       );
                     })),

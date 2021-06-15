@@ -18,23 +18,23 @@ class MyHomePage extends StatelessWidget {
     {'name': '会员中心', 'page': Membership()},
   ];
 
+  final BottomNavController bottomNavGetx = Get.put(BottomNavController());
+  
   @override
   Widget build(BuildContext context) {
-    final BottomNavController _getC = Get.put(BottomNavController());
-
     return Scaffold(
       resizeToAvoidBottomPadding: false,
       appBar: DiffAppBarHeight(
         customTitleBool: true,
         customTitleWidget: Obx(() => Text(
-              _children[_getC.count.value]['name'],
+              _children[bottomNavGetx.count.value]['name'],
               style: myTextStyle(34, 0xffffffff, true),
             )),
         leadingBool: false,
         leadingTapResult: {},
       ),
       body: Center(
-        child: Obx(() => _children[_getC.count.value]['page']),
+        child: Obx(() => _children[bottomNavGetx.count.value]['page']),
       ),
       bottomNavigationBar:
           HomePageBottomNavigationBar(), // This trailing comma makes auto-formatting nicer for build methods.

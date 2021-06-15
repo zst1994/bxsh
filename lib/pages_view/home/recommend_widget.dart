@@ -41,10 +41,8 @@ class RecommendWidget extends StatelessWidget {
             itemCount: _getC.recommend.length,
             itemBuilder: (context, index) {
               return InkWell(
-                onTap: () {
-                  Get.toNamed("/goodDetail",
-                      arguments: {'goodsId': _getC.recommend[index].goodsId});
-                },
+                onTap: () => Get.toNamed("/goodDetail",
+                    arguments: {'goodsId': _getC.recommend[index].goodsId}),
                 child: Container(
                   decoration: BoxDecoration(
                       color: Colors.white,

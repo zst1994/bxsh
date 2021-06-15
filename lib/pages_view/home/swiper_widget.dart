@@ -19,10 +19,8 @@ class SwiperWidget extends StatelessWidget {
               child: Swiper(
                 itemBuilder: (BuildContext context, int index) {
                   return InkWell(
-                    onTap: () {
-                      Get.toNamed("/goodDetail",
-                          arguments: {'goodsId': _getC.slides[index].goodsId});
-                    },
+                    onTap: () => Get.toNamed("/goodDetail",
+                        arguments: {'goodsId': _getC.slides[index].goodsId}),
                     child: Image.network(
                       _getC.slides[index].image,
                       fit: BoxFit.fill,

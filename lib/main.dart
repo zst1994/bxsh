@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/physics.dart';
-import 'package:flutter_bxsh/pages_view/class_ification/ification.dart';
-import 'package:flutter_bxsh/pages_view/good_detail/good_detail_widget.dart';
-import 'package:flutter_bxsh/pages_view/search_goods/search_goods_widget.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
+import 'package:flutter_bxsh/pages_view/coupons/coupons_widget.dart';
+import 'package:flutter_bxsh/pages_view/good_detail/good_detail_widget.dart';
+import 'package:flutter_bxsh/pages_view/search_goods/search_goods_widget.dart';
 import 'package:flutter_bxsh/my_home_page.dart';
 
 //Get有两个不同的状态管理器：简单的状态管理器（GetBuilder）和响应式状态管理器（GetX）
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     List<GetPage> getPages = [
       GetPage(name: '/', page: () => MyHomePage()),
-      GetPage(name: '/ification', page: () => Ification()),
+      GetPage(name: '/coupons', page: () => CouponsWidget()),
       GetPage(name: '/searchGoods', page: () => SearchGoodsWidget()),
       GetPage(name: '/goodDetail', page: () => GoodDetailWidget()),
     ];

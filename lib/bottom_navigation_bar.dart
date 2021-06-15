@@ -12,12 +12,23 @@ class HomePageBottomNavigationBar extends StatelessWidget {
     {'text': '会员中心', 'ImgKey': 'membership'},
   ];
 
+  final BottomNavController bottomNavGetx = Get.put(BottomNavController());
+
   @override
   Widget build(BuildContext context) {
-    final BottomNavController _getC = Get.put(BottomNavController());
+    return Obx(() => BottomNavigationBar(
+          // 添加type属性解决字体不显示问题
+          type: BottomNavigationBarType.fixed,
+          items: _bottomNavItems(),
+          currentIndex: bottomNavGetx.count.value,
+          onTap: (int index) {
+            bottomNavGetx.increment(index);
+          },
+        ));
+  }
 
-    final List<BottomNavigationBarItem> bottomNavItems =
-        List.generate(bottomNavigationData.length, (index) {
+  List<BottomNavigationBarItem> _bottomNavItems() {
+    return List.generate(bottomNavigationData.length, (index) {
       return BottomNavigationBarItem(
         backgroundColor: Colors.white,
         activeIcon: ImgAsset(
@@ -31,15 +42,5 @@ class HomePageBottomNavigationBar extends StatelessWidget {
         label: bottomNavigationData[index]['text'],
       );
     });
-
-    return Obx(() => BottomNavigationBar(
-          // 添加type属性解决字体不显示问题
-          type: BottomNavigationBarType.fixed,
-          items: bottomNavItems,
-          currentIndex: _getC.count.value,
-          onTap: (int index) {
-            _getC.increment(index);
-          },
-        ));
   }
 }

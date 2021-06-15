@@ -6,13 +6,12 @@ import 'package:flutter_bxsh/components/textStyle.dart';
 import 'package:flutter_bxsh/getx_controller/good_detail_getx.dart';
 
 class ShopGoodsInfoWidget extends StatelessWidget {
-  const ShopGoodsInfoWidget({Key key}) : super(key: key);
+  ShopGoodsInfoWidget({Key key}) : super(key: key);
+
+  final GoodDetailController goodDetailGetx = Get.put(GoodDetailController());
 
   @override
   Widget build(BuildContext context) {
-    final GoodDetailController goodDetailController =
-        Get.put(GoodDetailController());
-
     return Container(
       width: double.infinity,
       color: Colors.white,
@@ -23,7 +22,7 @@ class ShopGoodsInfoWidget extends StatelessWidget {
           Padding(
             padding: EdgeInsets.only(top: 10.w),
             child: Text(
-              goodDetailController.goodDetailData['goodInfo']['goodsName'],
+              goodDetailGetx.goodDetailData['goodInfo']['goodsName'],
               style: myTextStyle(30, 0xff333333, false),
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
@@ -42,14 +41,14 @@ class ShopGoodsInfoWidget extends StatelessWidget {
             ),
           ),
           Text(
-            '编号：${goodDetailController.goodDetailData['goodInfo']['goodsSerialNumber']}',
+            '编号：${goodDetailGetx.goodDetailData['goodInfo']['goodsSerialNumber']}',
             style: myTextStyle(26, 0xff999999, false),
           ),
           Padding(
             padding: EdgeInsets.only(top: 10.w, bottom: 20.w),
             child: Text.rich(TextSpan(
                 text:
-                    '￥${goodDetailController.goodDetailData['goodInfo']['presentPrice'].toString()} ',
+                    '￥${goodDetailGetx.goodDetailData['goodInfo']['presentPrice'].toString()} ',
                 style: myTextStyle(30, 0xffFF0000, false),
                 children: [
                   TextSpan(
@@ -58,7 +57,7 @@ class ShopGoodsInfoWidget extends StatelessWidget {
                       children: [
                         TextSpan(
                             text:
-                                '￥${goodDetailController.goodDetailData['goodInfo']['oriPrice'].toString()}',
+                                '￥${goodDetailGetx.goodDetailData['goodInfo']['oriPrice'].toString()}',
                             style: myTextStyle(30, 0xff999999, false,
                                 decoration: TextDecoration.lineThrough))
                       ])

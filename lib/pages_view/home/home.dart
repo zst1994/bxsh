@@ -15,7 +15,9 @@ import 'package:flutter_bxsh/pages_view/home/search_widget.dart';
 import 'package:flutter_bxsh/pages_view/home/swiper_widget.dart';
 
 class Home extends StatelessWidget {
-  final HomePageContentController homeController =
+  Home({Key key}) : super(key: key);
+
+  final HomePageContentController homeGetx =
       Get.put(HomePageContentController());
 
   RefreshController _refreshController =
@@ -23,7 +25,7 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-        future: homeController.getHomePageContent(),
+        future: homeGetx.getHomePageContent(),
         builder: (context, snapshot) {
           return ProgressDialog(
             loading: !snapshot.hasData,
@@ -65,8 +67,8 @@ class Home extends StatelessWidget {
                   );
                 },
               ),
-              onRefresh: () => homeController.onRefresh(_refreshController),
-              onLoading: () => homeController.onLoading(_refreshController),
+              onRefresh: () => homeGetx.onRefresh(_refreshController),
+              onLoading: () => homeGetx.onLoading(_refreshController),
               child: ListView(
                 shrinkWrap: true,
                 children: [

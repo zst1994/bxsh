@@ -15,15 +15,16 @@ class AdvertesPictureWidget extends StatelessWidget {
               width: double.infinity,
               child: Column(
                 children: [
-                  Image.network(
-                    _getC.advertesPicture.value,
-                    fit: BoxFit.fitWidth,
+                  GestureDetector(
+                    onTap: () => Get.toNamed('/coupons'),
+                    child: Image.network(
+                      _getC.advertesPicture.value,
+                      fit: BoxFit.fitWidth,
+                    ),
                   ),
                   InkWell(
-                    onTap: () {
-                      Call.makePhoneCall(
-                          'tel:${_getC.shopInfo['leaderPhone'] ?? ''}');
-                    },
+                    onTap: () => Call.makePhoneCall(
+                        'tel:${_getC.shopInfo['leaderPhone'] ?? ''}'),
                     child: Image.network(
                       _getC.shopInfo['leaderImage'] ?? '',
                       fit: BoxFit.fitWidth,

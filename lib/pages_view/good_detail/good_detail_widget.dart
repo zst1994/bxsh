@@ -29,6 +29,9 @@ class _GoodDetailWidgetState extends State<GoodDetailWidget>
   ScrollController _listViewController = new ScrollController();
   ScrollController _singleCrotroller = new ScrollController();
 
+  Map parameters = Get.arguments;
+  final GoodDetailController goodDetailGetx = Get.put(GoodDetailController());
+
   @protected
   bool get wantKeepAlive => true;
 
@@ -63,31 +66,26 @@ class _GoodDetailWidgetState extends State<GoodDetailWidget>
 
   @override
   Widget build(BuildContext context) {
-    Map parameters = Get.arguments;
-    final GoodDetailController goodDetailController =
-        Get.put(GoodDetailController());
-
     return Scaffold(
       appBar: DiffAppBarHeight(
           customTitleBool: true,
           customTitleWidget: Obx(() => Text(
-                Empty.isEmpty(goodDetailController.goodDetailData)
+                Empty.isEmpty(goodDetailGetx.goodDetailData)
                     ? ''
-                    : goodDetailController.goodDetailData['goodInfo']
-                        ['goodsName'],
+                    : goodDetailGetx.goodDetailData['goodInfo']['goodsName'],
                 style: myTextStyle(34, 0xffffffff, true),
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
               )),
           leadingTapResult: {}),
       body: FutureBuilder(
-          future: goodDetailController.getGoodDetail(parameters['goodsId']),
+          future: goodDetailGetx.getGoodDetail(parameters['goodsId']),
           builder: (context, snapshot) {
             final double sizeWidth = MediaQuery.of(context).size.width;
 
             return ProgressDialog(
                 loading: !snapshot.hasData,
-                child: Empty.isEmpty(goodDetailController.goodDetailData)
+                child: Empty.isEmpty(goodDetailGetx.goodDetailData)
                     ? Container()
                     : Stack(
                         children: [

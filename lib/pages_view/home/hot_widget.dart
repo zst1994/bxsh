@@ -6,16 +6,17 @@ import 'package:flutter_bxsh/components/textStyle.dart';
 import 'package:flutter_bxsh/getx_controller/homePageContent_getx.dart';
 
 class HotWidget extends StatelessWidget {
-  const HotWidget({Key key}) : super(key: key);
+  HotWidget({Key key}) : super(key: key);
+
+  final HomePageContentController homeGetx =
+      Get.put(HomePageContentController());
 
   @override
   Widget build(BuildContext context) {
-    final HomePageContentController controller =
-        Get.put(HomePageContentController());
     return Obx(() {
-      return controller.homePageBelowConten.length > 0
+      return homeGetx.homePageBelowConten.length > 0
           ? Column(
-              children: [_hotTitle(context), _hotBody(context, controller)],
+              children: [_hotTitle(context), _hotBody(context, homeGetx)],
             )
           : Container();
     });
@@ -25,11 +26,9 @@ class HotWidget extends StatelessWidget {
     return Wrap(
         children: List.generate(controller.homePageBelowConten.length, (index) {
       return InkWell(
-        onTap: () {
-          Get.toNamed("/goodDetail", arguments: {
-            'goodsId': controller.homePageBelowConten[index]['goodsId']
-          });
-        },
+        onTap: () => Get.toNamed("/goodDetail", arguments: {
+          'goodsId': controller.homePageBelowConten[index]['goodsId']
+        }),
         child: Container(
           width: 375.w,
           alignment: Alignment.center,

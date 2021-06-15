@@ -52,9 +52,7 @@ class FloorWidget extends StatelessWidget {
 
   Widget _floor(String imgUrl, String goodsId) {
     return InkWell(
-      onTap: () {
-        Get.toNamed("/goodDetail", arguments: {'goodsId': goodsId});
-      },
+      onTap: () => Get.toNamed("/goodDetail", arguments: {'goodsId': goodsId}),
       child: Image.network(
         imgUrl,
         fit: BoxFit.fitWidth,

@@ -18,8 +18,7 @@ class GoodTabViewWidget extends StatelessWidget {
       {Key key})
       : super(key: key);
 
-  final GoodDetailController goodDetailController =
-      Get.put(GoodDetailController());
+  final GoodDetailController goodDetailGetx = Get.put(GoodDetailController());
 
   @override
   Widget build(BuildContext context) {
@@ -62,12 +61,12 @@ class GoodTabViewWidget extends StatelessWidget {
                     child: Column(
                       children: [
                         Html(
-                          data: goodDetailController.goodDetailData['goodInfo']
+                          data: goodDetailGetx.goodDetailData['goodInfo']
                               ['goodsDetail'],
                         ),
-                        _bottomImg(goodDetailController
-                                .goodDetailData['advertesPicture']
-                            ['PICTURE_ADDRESS'])
+                        _bottomImg(
+                            goodDetailGetx.goodDetailData['advertesPicture']
+                                ['PICTURE_ADDRESS'])
                       ],
                     ),
                   ),
@@ -76,58 +75,70 @@ class GoodTabViewWidget extends StatelessWidget {
                     physics: scroBool ? null : NeverScrollableScrollPhysics(),
                     child: Column(
                       children: [
-                        ListView.separated(
-                            shrinkWrap: true,
-                            physics: NeverScrollableScrollPhysics(),
-                            padding: EdgeInsets.symmetric(vertical: 5.w),
-                            itemBuilder: (context, index) => Container(
-                                  color: Colors.white,
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: 20.w, vertical: 15.w),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        goodDetailController
-                                                .goodDetailData['goodComments']
-                                            [index]['userName'],
-                                        style:
-                                            myTextStyle(28, 0xff666666, true),
+                        goodDetailGetx.goodDetailData['goodComments'].length > 0
+                            ? ListView.separated(
+                                shrinkWrap: true,
+                                physics: NeverScrollableScrollPhysics(),
+                                padding: EdgeInsets.symmetric(vertical: 5.w),
+                                itemBuilder: (context, index) => Container(
+                                      color: Colors.white,
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal: 20.w, vertical: 15.w),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            goodDetailGetx.goodDetailData[
+                                                    'goodComments'][index]
+                                                ['userName'],
+                                            style: myTextStyle(
+                                                28, 0xff666666, true),
+                                          ),
+                                          SizedBox(
+                                            height: 10.w,
+                                          ),
+                                          Text(
+                                            goodDetailGetx.goodDetailData[
+                                                    'goodComments'][index]
+                                                ['comments'],
+                                            style: myTextStyle(
+                                                28, 0xff666666, false),
+                                          ),
+                                          SizedBox(
+                                            height: 10.w,
+                                          ),
+                                          Text(
+                                            Format.formatDate(
+                                                goodDetailGetx.goodDetailData[
+                                                        'goodComments'][index]
+                                                    ['discussTime']),
+                                            style: myTextStyle(
+                                                26, 0xff999999, false),
+                                          ),
+                                        ],
                                       ),
-                                      SizedBox(
-                                        height: 10.w,
-                                      ),
-                                      Text(
-                                        goodDetailController
-                                                .goodDetailData['goodComments']
-                                            [index]['comments'],
-                                        style:
-                                            myTextStyle(28, 0xff666666, false),
-                                      ),
-                                      SizedBox(
-                                        height: 10.w,
-                                      ),
-                                      Text(
-                                        Format.formatDate(goodDetailController
-                                                .goodDetailData['goodComments']
-                                            [index]['discussTime']),
-                                        style:
-                                            myTextStyle(26, 0xff999999, false),
-                                      ),
-                                    ],
+                                    ),
+                                separatorBuilder: (context, index) => Divider(
+                                      color: Colors.grey[400],
+                                      height: 1.w,
+                                      thickness: 1.w,
+                                    ),
+                                itemCount: goodDetailGetx
+                                    .goodDetailData['goodComments'].length)
+                            : Container(
+                                color: Colors.white,
+                                padding: EdgeInsets.symmetric(vertical: 40.w),
+                                child: Center(
+                                  child: Text(
+                                    '暂时还没有评论喔！',
+                                    style: myTextStyle(28, 0xff666666, false),
                                   ),
                                 ),
-                            separatorBuilder: (context, index) => Divider(
-                                  color: Colors.grey[400],
-                                  height: 1.w,
-                                  thickness: 1.w,
-                                ),
-                            itemCount: goodDetailController
-                                .goodDetailData['goodComments'].length),
-                        _bottomImg(goodDetailController
-                                .goodDetailData['advertesPicture']
-                            ['PICTURE_ADDRESS'])
+                              ),
+                        _bottomImg(
+                            goodDetailGetx.goodDetailData['advertesPicture']
+                                ['PICTURE_ADDRESS'])
                       ],
                     ),
                   ),

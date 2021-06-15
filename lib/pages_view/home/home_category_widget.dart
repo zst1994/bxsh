@@ -7,12 +7,12 @@ import 'package:flutter_bxsh/components/textStyle.dart';
 import 'package:flutter_bxsh/getx_controller/homePageContent_getx.dart';
 
 class HomeCategoryWidget extends StatelessWidget {
-  const HomeCategoryWidget({Key key}) : super(key: key);
+  HomeCategoryWidget({Key key}) : super(key: key);
+
+  final BottomNavController bottomNavGetx = Get.put(BottomNavController());
 
   @override
   Widget build(BuildContext context) {
-    final BottomNavController _bnc = Get.put(BottomNavController());
-
     return GetBuilder<HomePageContentController>(
       builder: (_getC) {
         return _getC.category.length > 0
@@ -31,9 +31,7 @@ class HomeCategoryWidget extends StatelessWidget {
                   childAspectRatio: 8 / 7,
                   children: List.generate(4, (i) {
                     return GestureDetector(
-                      onTap: () {
-                        _bnc.increment(1);
-                      },
+                      onTap: () => bottomNavGetx.increment(1),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,

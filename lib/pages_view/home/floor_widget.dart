@@ -9,36 +9,36 @@ class FloorWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<HomePageContentController>(builder: (controller) {
+    return GetBuilder<HomePageContentController>(builder: (_getC) {
       return Column(
-        children: List.generate(controller.floor.length, (i) {
+        children: List.generate(_getC.floor.length, (i) {
           return Column(
             children: [
               Container(
                   width: double.infinity,
                   padding: EdgeInsets.symmetric(vertical: 10.w),
                   child: Image.network(
-                    controller.floor[i]['floor'].pictureAddress,
+                    _getC.floor[i]['floor'].pictureAddress,
                     fit: BoxFit.fitWidth,
                   )),
               Row(
                 children: [
                   Column(
                     children: [
-                      _floor(controller.floor[i]['data'][0].image,
-                          controller.floor[i]['data'][0].goodsId),
-                      _floor(controller.floor[i]['data'][3].image,
-                          controller.floor[i]['data'][3].goodsId),
+                      _floor(_getC.floor[i]['data'][0].image,
+                          _getC.floor[i]['data'][0].goodsId),
+                      _floor(_getC.floor[i]['data'][3].image,
+                          _getC.floor[i]['data'][3].goodsId),
                     ],
                   ),
                   Column(
                     children: [
-                      _floor(controller.floor[i]['data'][1].image,
-                          controller.floor[i]['data'][1].goodsId),
-                      _floor(controller.floor[i]['data'][2].image,
-                          controller.floor[i]['data'][2].goodsId),
-                      _floor(controller.floor[i]['data'][4].image,
-                          controller.floor[i]['data'][4].goodsId),
+                      _floor(_getC.floor[i]['data'][1].image,
+                          _getC.floor[i]['data'][1].goodsId),
+                      _floor(_getC.floor[i]['data'][2].image,
+                          _getC.floor[i]['data'][2].goodsId),
+                      _floor(_getC.floor[i]['data'][4].image,
+                          _getC.floor[i]['data'][4].goodsId),
                     ],
                   )
                 ],

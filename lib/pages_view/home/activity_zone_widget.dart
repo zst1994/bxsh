@@ -10,8 +10,8 @@ class ActivityZoneWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<HomePageContentController>(
-      builder: (controller) {
-        return controller.activityZone.length > 0
+      builder: (_getC) {
+        return _getC.activityZone.length > 0
             ? Container(
                 width: double.infinity,
                 margin: EdgeInsets.symmetric(vertical: 10.w),
@@ -21,10 +21,10 @@ class ActivityZoneWidget extends StatelessWidget {
                   shrinkWrap: true,
                   // 取消滚动效果
                   physics: NeverScrollableScrollPhysics(),
-                  itemCount: controller.activityZone.length,
+                  itemCount: _getC.activityZone.length,
                   itemBuilder: (BuildContext context, int i) {
                     return Image.network(
-                      controller.activityZone[i].pictureAddress,
+                      _getC.activityZone[i].pictureAddress,
                       fit: BoxFit.fill,
                     );
                   },

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:url_launcher/url_launcher.dart';
 
+import 'package:flutter_bxsh/common/call_phone.dart';
 import 'package:flutter_bxsh/getx_controller/homePageContent_getx.dart';
 
 class AdvertesPictureWidget extends StatelessWidget {
@@ -9,35 +9,29 @@ class AdvertesPictureWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<HomePageContentController>(builder: (controller) {
-      return Container(
-          width: double.infinity,
-          child: Column(
-            children: [
-              Image.network(
-                controller.advertesPicture.value,
-                fit: BoxFit.fitWidth,
-              ),
-              InkWell(
-                onTap: () {
-                  _makePhoneCall(
-                      'tel:${controller.shopInfo['leaderPhone'] ?? ''}');
-                },
-                child: Image.network(
-                  controller.shopInfo['leaderImage'] ?? '',
-                  fit: BoxFit.fitWidth,
-                ),
-              )
-            ],
-          ));
+    return GetBuilder<HomePageContentController>(builder: (_getC) {
+      return _getC.advertesPicture.value != ""
+          ? Container(
+              width: double.infinity,
+              child: Column(
+                children: [
+                  Image.network(
+                    _getC.advertesPicture.value,
+                    fit: BoxFit.fitWidth,
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Call.makePhoneCall(
+                          'tel:${_getC.shopInfo['leaderPhone'] ?? ''}');
+                    },
+                    child: Image.network(
+                      _getC.shopInfo['leaderImage'] ?? '',
+                      fit: BoxFit.fitWidth,
+                    ),
+                  )
+                ],
+              ))
+          : Container();
     });
-  }
-
-  Future<void> _makePhoneCall(String url) async {
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      throw 'Could not launch $url';
-    }
   }
 }

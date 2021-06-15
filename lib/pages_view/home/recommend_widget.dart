@@ -32,19 +32,18 @@ class RecommendWidget extends StatelessWidget {
   }
 
   Widget _recommendBody() {
-    return GetBuilder<HomePageContentController>(builder: (controller) {
+    return GetBuilder<HomePageContentController>(builder: (_getC) {
       return Container(
         height: 340.w,
         child: ListView.builder(
             shrinkWrap: true,
             scrollDirection: Axis.horizontal,
-            itemCount: controller.recommend.length,
+            itemCount: _getC.recommend.length,
             itemBuilder: (context, index) {
               return InkWell(
                 onTap: () {
-                  Get.toNamed("/goodDetail", arguments: {
-                    'goodsId': controller.recommend[index].goodsId
-                  });
+                  Get.toNamed("/goodDetail",
+                      arguments: {'goodsId': _getC.recommend[index].goodsId});
                 },
                 child: Container(
                   decoration: BoxDecoration(
@@ -57,17 +56,17 @@ class RecommendWidget extends StatelessWidget {
                       Padding(
                         padding: EdgeInsets.only(bottom: 10.w),
                         child: Image.network(
-                          controller.recommend[index].image,
+                          _getC.recommend[index].image,
                           fit: BoxFit.fitWidth,
                           width: 240.w,
                         ),
                       ),
                       Text(
-                        '￥' + controller.recommend[index].mallPrice.toString(),
+                        '￥' + _getC.recommend[index].mallPrice.toString(),
                         style: myTextStyle(26, 0xff333333, false),
                       ),
                       Text(
-                        '￥' + controller.recommend[index].price.toString(),
+                        '￥' + _getC.recommend[index].price.toString(),
                         style: TextStyle(
                             fontSize: 26.sp,
                             color: Color(0xff999999),

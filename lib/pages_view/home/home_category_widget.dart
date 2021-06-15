@@ -11,8 +11,8 @@ class HomeCategoryWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<HomePageContentController>(
-      builder: (controller) {
-        return controller.category.length > 0
+      builder: (_getC) {
+        return _getC.category.length > 0
             ? Container(
                 width: double.infinity,
                 margin: EdgeInsets.symmetric(vertical: 10.w),
@@ -34,14 +34,14 @@ class HomeCategoryWidget extends StatelessWidget {
                         Container(
                             width: 90.w,
                             child: Image.network(
-                              controller.category[i].image,
+                              _getC.category[i].image,
                               fit: BoxFit.fitWidth,
                             )),
                         SizedBox(
                           height: 15.w,
                         ),
                         Text(
-                          controller.category[i].mallCategoryName,
+                          _getC.category[i].mallCategoryName,
                           style: myTextStyle(26, 0xff333333, false),
                         )
                       ],

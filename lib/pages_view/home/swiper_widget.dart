@@ -11,8 +11,8 @@ class SwiperWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<HomePageContentController>(builder: (controller) {
-      return controller.slides.length > 0
+    return GetBuilder<HomePageContentController>(builder: (_getC) {
+      return _getC.slides.length > 0
           ? Container(
               width: double.infinity,
               height: 350.w,
@@ -20,12 +20,11 @@ class SwiperWidget extends StatelessWidget {
                 itemBuilder: (BuildContext context, int index) {
                   return InkWell(
                     onTap: () {
-                      Get.toNamed("/goodDetail", arguments: {
-                        'goodsId': controller.slides[index].goodsId
-                      });
+                      Get.toNamed("/goodDetail",
+                          arguments: {'goodsId': _getC.slides[index].goodsId});
                     },
                     child: Image.network(
-                      controller.slides[index].image,
+                      _getC.slides[index].image,
                       fit: BoxFit.fill,
                     ),
                   );
@@ -33,7 +32,7 @@ class SwiperWidget extends StatelessWidget {
                 duration: 1000,
                 autoplay: true,
                 scrollDirection: Axis.horizontal,
-                itemCount: controller.slides.length,
+                itemCount: _getC.slides.length,
                 // 展示默认分页指示器
                 pagination: SwiperPagination(
                     builder: DotSwiperPaginationBuilder(

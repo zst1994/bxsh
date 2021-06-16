@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bxsh/components/img_asset.dart';
 import 'package:get/get.dart';
 
-import 'package:flutter_bxsh/getx_controller/bottom_navigationBar.dart';
+import 'package:flutter_bxsh/getx_controller/bottom_nav_getx.dart';
 
 class HomePageBottomNavigationBar extends StatelessWidget {
   final List bottomNavigationData = [

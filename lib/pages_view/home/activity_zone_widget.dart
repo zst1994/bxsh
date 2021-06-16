@@ -23,9 +23,25 @@ class ActivityZoneWidget extends StatelessWidget {
                   physics: NeverScrollableScrollPhysics(),
                   itemCount: _getC.activityZone.length,
                   itemBuilder: (BuildContext context, int i) {
-                    return Image.network(
-                      _getC.activityZone[i].pictureAddress,
-                      fit: BoxFit.fill,
+                    return GestureDetector(
+                      onTap: () {
+                        switch (i) {
+                          case 0:
+                            Get.toNamed('/groupWork');
+                            break;
+                          case 1:
+                            // Get.toNamed('/groupWork');
+                            break;
+                          case 2:
+                            // Get.toNamed('/groupWork');
+                            break;
+                          default:
+                        }
+                      },
+                      child: Image.network(
+                        _getC.activityZone[i].pictureAddress,
+                        fit: BoxFit.fill,
+                      ),
                     );
                   },
                   //SliverGridDelegateWithFixedCrossAxisCount 构建一个横轴固定数量Widget

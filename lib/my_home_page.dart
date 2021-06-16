@@ -4,7 +4,7 @@ import 'package:flutter_bxsh/components/textStyle.dart';
 import 'package:get/get.dart';
 
 import 'package:flutter_bxsh/bottom_navigation_bar.dart';
-import 'package:flutter_bxsh/getx_controller/bottom_navigationBar.dart';
+import 'package:flutter_bxsh/getx_controller/bottom_nav_getx.dart';
 import 'package:flutter_bxsh/pages_view/home/home.dart';
 import 'package:flutter_bxsh/pages_view/class_ification/ification.dart';
 import 'package:flutter_bxsh/pages_view/shopping_cart/shopping_cart.dart';

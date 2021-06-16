@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bxsh/getx_controller/bottom_navigationBar.dart';
+import 'package:flutter_bxsh/getx_controller/bottom_nav_getx.dart';
 import 'package:get/get.dart';
 
 class Membership extends StatelessWidget {

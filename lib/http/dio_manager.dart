@@ -123,7 +123,7 @@ class DioManager {
           error.type == DioErrorType.RESPONSE) {
         errorResponse.statusCode = ResultCode.CONNECT_TIMEOUT;
         errorResponse.statusMessage = "请求超时";
-      CustomToast.shortToast("请求已超时,稍后重试");
+        CustomToast.shortToast("请求已超时,稍后重试");
       } else if (error.type == DioErrorType.RECEIVE_TIMEOUT) {
         // 一般服务器错误
         errorResponse.statusCode = ResultCode.RECEIVE_TIMEOUT;

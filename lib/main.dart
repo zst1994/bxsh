@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
     // 方式一
     return ScreenUtilInit(
         designSize: Size(750, 1334),
-        allowFontScaling: true,
+        // allowFontScaling: true,
         builder: () => RefreshConfiguration(
             headerBuilder: () =>
                 WaterDropHeader(), // 配置默认头部指示器,假如你每个页面的头部指示器都一样的话,你需要设置这个

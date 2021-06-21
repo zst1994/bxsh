@@ -23,7 +23,9 @@ class ProgressDialog extends StatelessWidget {
       {Key key,
       @required this.loading,
       this.msg,
-      this.progress = const CircularProgressIndicator(),
+      this.progress = const CircularProgressIndicator(
+        color: Color(0xFFE50078),
+      ),
       this.alpha = 0.6,
       this.textColor = Colors.black87,
       @required this.child})

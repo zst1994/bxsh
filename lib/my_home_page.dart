@@ -23,7 +23,7 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomPadding: false,
+      // resizeToAvoidBottomPadding: false,
       appBar: DiffAppBarHeight(
         customTitleBool: true,
         customTitleWidget: Obx(() => Text(

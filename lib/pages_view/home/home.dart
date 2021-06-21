@@ -22,7 +22,7 @@ class Home extends StatelessWidget {
 
   RefreshController _refreshController =
       RefreshController(initialRefresh: false);
-      
+
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
@@ -49,7 +49,9 @@ class Home extends StatelessWidget {
                   if (mode == LoadStatus.idle) {
                     textContent = "加载完成";
                   } else if (mode == LoadStatus.loading) {
-                    contentWidget = CircularProgressIndicator();
+                    contentWidget = CircularProgressIndicator(
+                      color: Theme.of(context).accentColor,
+                    );
                   } else if (mode == LoadStatus.failed) {
                     textContent = "加载失败，请重新刷新加载!";
                   } else if (mode == LoadStatus.canLoading) {

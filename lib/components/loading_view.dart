@@ -23,9 +23,7 @@ class ProgressDialog extends StatelessWidget {
       {Key key,
       @required this.loading,
       this.msg,
-      this.progress = const CircularProgressIndicator(
-        color: Color(0xFFE50078),
-      ),
+      this.progress,
       this.alpha = 0.6,
       this.textColor = Colors.black87,
       @required this.child})
@@ -50,7 +48,10 @@ class ProgressDialog extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              progress,
+              progress ??
+                  CircularProgressIndicator(
+                    color: Theme.of(context).accentColor,
+                  ),
               Container(
                 padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 0),
                 child: Text(

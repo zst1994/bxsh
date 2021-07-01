@@ -45,7 +45,7 @@ class CouponsController extends GetxController {
 
   Future getCouponsGetByself(_refreshController) async {
     await DioManager.getInstance().post("/baixing/wxmini/fujiCouponsGetByself",
-        {'userId': '', 'scene': '', 'page': page, 'qrcode': 0},
+        {'userId': '', 'scene': '', 'page': page.value, 'qrcode': 0},
         onSuccess: (data) {
       if (data.length > 0) {
         couponsGetByself.addAll(data);

@@ -21,7 +21,7 @@ class GoodDetailWidget extends StatefulWidget {
 }
 
 class _GoodDetailWidgetState extends State<GoodDetailWidget>
-    with TickerProviderStateMixin {
+    with TickerProviderStateMixin, AutomaticKeepAliveClientMixin {
   List _spList = ["详情", "评论"];
   bool scroBool = false;
 
@@ -31,6 +31,9 @@ class _GoodDetailWidgetState extends State<GoodDetailWidget>
 
   Map parameters = Get.arguments;
   final GoodDetailController goodDetailGetx = Get.put(GoodDetailController());
+
+  @protected
+  bool get wantKeepAlive => true;
 
   @override
   void initState() {
@@ -63,6 +66,7 @@ class _GoodDetailWidgetState extends State<GoodDetailWidget>
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Scaffold(
       appBar: DiffAppBarHeight(
           customTitleBool: true,

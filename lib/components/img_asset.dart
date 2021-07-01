@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ImgAsset extends StatelessWidget {
-  String imgUrl;
-  double imgW;
-  double imgH;
-  BoxFit fit;
-  Color imgColor;
+  final String imgUrl;
+  final double imgW;
+  final double imgH;
+  final BoxFit fit;
+  final Color imgColor;
 
   ImgAsset(
       {Key key,

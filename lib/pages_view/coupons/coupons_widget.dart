@@ -16,7 +16,7 @@ class CouponsWidget extends StatelessWidget {
 
   final CouponsController couponsGetx = Get.put(CouponsController());
 
-  RefreshController _refreshController =
+  final RefreshController _refreshController =
       RefreshController(initialRefresh: false);
 
   @override

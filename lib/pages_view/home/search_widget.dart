@@ -9,7 +9,7 @@ import 'package:flutter_bxsh/components/toast_view.dart';
 
 // 顶部搜索
 class SearchWidget extends StatelessWidget {
-  TextEditingController controller = new TextEditingController(); //声明controller
+  final TextEditingController controller = new TextEditingController(); //声明controller
 
   @override
   Widget build(BuildContext context) {

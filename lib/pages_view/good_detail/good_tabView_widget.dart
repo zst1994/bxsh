@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
-import 'package:flutter_html/html_parser.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
@@ -9,10 +8,10 @@ import 'package:flutter_bxsh/components/textStyle.dart';
 import 'package:flutter_bxsh/getx_controller/good_detail_getx.dart';
 
 class GoodTabViewWidget extends StatelessWidget {
-  TabController _tabController;
-  ScrollController _singleCrotroller;
-  bool scroBool;
-  List _spList;
+  final TabController _tabController;
+  final ScrollController _singleCrotroller;
+  final bool scroBool;
+  final List _spList;
 
   GoodTabViewWidget(
       this._tabController, this._singleCrotroller, this.scroBool, this._spList,
@@ -64,6 +63,17 @@ class GoodTabViewWidget extends StatelessWidget {
                         Html(
                           data: goodDetailGetx.goodDetailData['goodInfo']
                               ['goodsDetail'],
+                          customImageRenders: {
+                            networkSourceMatcher(): networkImageRender(
+                              loadingWidget: () => Container(
+                                width: 0,
+                                height: 0,
+                              ),
+                              // loadingWidget: () => CircularProgressIndicator(
+                              //   color: Theme.of(context).accentColor,
+                              // )
+                            ),
+                          },
                         ),
                         _bottomImg(
                             goodDetailGetx.goodDetailData['advertesPicture']

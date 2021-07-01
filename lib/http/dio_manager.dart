@@ -177,7 +177,7 @@ class DioManager {
         return baseWrap.data;
       }
     } catch (e) {
-      debugPrint("异常${e}");
+      debugPrint("异常:${e.toString()}");
       if (onError != null) {
         onError(-1, e.toString());
       }

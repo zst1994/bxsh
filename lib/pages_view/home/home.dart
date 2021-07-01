@@ -20,7 +20,7 @@ class Home extends StatelessWidget {
   final HomePageContentController homeGetx =
       Get.put(HomePageContentController());
 
-  RefreshController _refreshController =
+  final RefreshController _refreshController =
       RefreshController(initialRefresh: false);
 
   @override

@@ -9,50 +9,50 @@ import 'package:flutter_bxsh/components/img_asset.dart';
 
 class DiffAppBarHeight extends StatelessWidget implements PreferredSizeWidget {
   // title文本大小
-  int appBarTitleSize;
+  final int appBarTitleSize;
 
   // title文本颜色
-  int appBarTitleColor;
+  final int appBarTitleColor;
 
   // 修改appBar高度
-  double appBarbottom;
+  final double appBarbottom;
 
   // 显示文本
-  String appBarTitle;
+  final String appBarTitle;
 
-  bool leadingBool;
+  final bool leadingBool;
 
   // 返回按钮icon路径
-  String leadImUrl;
+  final String leadImUrl;
 
-  bool appBarTitleFontWeight;
+  final bool appBarTitleFontWeight;
 
   // 文本只有一行内容时，若超过设置最大宽度，是否自动换行，true 为换行，false 为不换行；
-  bool softWrap;
+  final bool softWrap;
 
   // 是否需要自定义导航栏title内容，默认false
-  bool customTitleBool;
+  final bool customTitleBool;
 
-  bool automaticallyImplyLeading;
+  final bool automaticallyImplyLeading;
 
   // appBar背景色
-  Color backgroundColor;
+  final Color backgroundColor;
 
-  Widget flexibleSpace;
+  final Widget flexibleSpace;
 
-  Widget appBarBottomWidget;
+  final Widget appBarBottomWidget;
 
   // 自定义导航栏title内容
-  Widget customTitleWidget;
+  final Widget customTitleWidget;
 
   // 导航栏顶部右边按钮数组
-  List<Widget> actions;
+  final List<Widget> actions;
 
   // 点击返回按钮的返回结果
-  Map<String, dynamic> leadingTapResult;
+  final Map<String, dynamic> leadingTapResult;
 
   // 状态栏模式
-  Brightness brightness;
+  final Brightness brightness;
 
   DiffAppBarHeight(
       {Key key,

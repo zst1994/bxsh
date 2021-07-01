@@ -14,10 +14,10 @@ class SearchGoodsWidget extends StatelessWidget {
   final SearchGoodsController searchGoodsGetx =
       Get.put(SearchGoodsController());
 
-  RefreshController _refreshController =
+  final RefreshController _refreshController =
       RefreshController(initialRefresh: false);
 
-  Map parameters = Get.arguments;
+  final Map parameters = Get.arguments;
 
   @override
   Widget build(BuildContext context) {

@@ -76,6 +76,7 @@ class DiffAppBarHeight extends StatelessWidget implements PreferredSizeWidget {
       : super(key: key);
 
   @override
+  //设置ios安卓不同机型的导航栏高度
   Size get preferredSize => Platform.isIOS
       ? Size.fromHeight(88.0.h + appBarbottom)
       : Size.fromHeight(kToolbarHeight + appBarbottom);
@@ -112,15 +113,4 @@ class DiffAppBarHeight extends StatelessWidget implements PreferredSizeWidget {
           bottom: appBarBottomWidget,
         ));
   }
-}
-
-//设置ios安卓不同机型的导航栏高度
-Widget setDiffPhoneAppBarHeight(Widget phoneAppBar,
-    {double appBarbottom = 0.0}) {
-  return PreferredSize(
-      preferredSize: Platform.isIOS
-          ? Size.fromHeight(88.0.h + appBarbottom)
-          : Size.fromHeight(
-              kToolbarHeight + appBarbottom), // here the desired height
-      child: phoneAppBar);
 }

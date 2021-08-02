@@ -16,6 +16,9 @@ class ProgressDialog extends StatelessWidget {
   //背景透明度
   final double alpha;
 
+  //背景颜色
+  final Color bgColor;
+
   //字体颜色
   final Color textColor;
 
@@ -25,6 +28,7 @@ class ProgressDialog extends StatelessWidget {
       this.msg,
       this.progress,
       this.alpha = 0.6,
+      this.bgColor = Colors.black45,
       this.textColor = Colors.black87,
       @required this.child})
       : assert(child != null),
@@ -66,7 +70,7 @@ class ProgressDialog extends StatelessWidget {
 
       widgetList.add(Opacity(
         opacity: alpha,
-        child: new ModalBarrier(color: Colors.black45),
+        child: new ModalBarrier(color: bgColor),
       ));
       widgetList.add(layoutProgress);
     }

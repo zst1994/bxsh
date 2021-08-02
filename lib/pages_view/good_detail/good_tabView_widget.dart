@@ -63,17 +63,17 @@ class GoodTabViewWidget extends StatelessWidget {
                         Html(
                           data: goodDetailGetx.goodDetailData['goodInfo']
                               ['goodsDetail'],
-                          customImageRenders: {
-                            networkSourceMatcher(): networkImageRender(
-                              loadingWidget: () => Container(
-                                width: 0,
-                                height: 0,
-                              ),
-                              // loadingWidget: () => CircularProgressIndicator(
-                              //   color: Theme.of(context).accentColor,
-                              // )
-                            ),
-                          },
+                          // customImageRenders: {
+                          //   networkSourceMatcher(): networkImageRender(
+                          //     loadingWidget: () => Container(
+                          //       width: 0,
+                          //       height: 0,
+                          //     ),
+                          //     // loadingWidget: () => CircularProgressIndicator(
+                          //     //   color: Theme.of(context).accentColor,
+                          //     // )
+                          //   ),
+                          // },
                         ),
                         _bottomImg(
                             goodDetailGetx.goodDetailData['advertesPicture']

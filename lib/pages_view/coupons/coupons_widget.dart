@@ -49,7 +49,7 @@ class CouponsWidget extends StatelessWidget {
                               textContent = "加载完成";
                             } else if (mode == LoadStatus.loading) {
                               contentWidget = CircularProgressIndicator(
-                                color: Theme.of(context).accentColor,
+                                // color: Theme.of(context).accentColor,
                               );
                             } else if (mode == LoadStatus.failed) {
                               textContent = "加载失败，请重新刷新加载!";

@@ -50,7 +50,7 @@ class ProgressDialog extends StatelessWidget {
             children: <Widget>[
               progress ??
                   CircularProgressIndicator(
-                    color: Theme.of(context).accentColor,
+                    // color: Theme.of(context).accentColor,
                   ),
               Container(
                 padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 0),
